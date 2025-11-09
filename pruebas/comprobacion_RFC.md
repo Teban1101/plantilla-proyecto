@@ -1,0 +1,2 @@
+
+Para correr el RC4: powershell -NoProfile -Command "Invoke-RestMethod -Uri 'http://localhost:8080/AlpesCab/api/rfcs/rfc4?ciudad=Cali&fechaInicio=2025-11-01%2000:00:00&fechaFin=2025-11-30%2023:59:59' -Method Get | ConvertTo-Json -Depth 4"
