@@ -36,6 +36,11 @@ public class DisponibilidadController {
 
     @PostMapping
     public ResponseEntity<Disponibilidad> create(@Valid @RequestBody Disponibilidad d) {
+        // If DB doesn't auto-generate IDs (Oracle), assign next id manually
+        if (d.getIdDisponibilidad() == null) {
+            Long max = repo.findMaxId();
+            d.setIdDisponibilidad((max == null ? 1L : max + 1L));
+        }
         Disponibilidad saved = repo.save(d);
         return ResponseEntity.status(201).body(saved);
     }

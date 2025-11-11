@@ -1,0 +1,247 @@
+{
+  "info": {
+    "name": "AlpesCab - RF Collection",
+    "_postman_id": "a1b2c3d4-e5f6-4012-9876-abcdef123456",
+    "description": "Collection to test the 11 RF endpoints of the AlpesCab application (chained, with assertions).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "RF1 - Registrar Ciudad",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombreCiudad\": \"PruebaCiudad\",\n  \"pais\": \"Colombia\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/ciudades", "host": ["{{baseUrl}}"], "path": ["api","ciudades"] }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
+              "var json = pm.response.json();",
+              "pm.environment.set('ciudadNombre', json.nombreCiudad || 'PruebaCiudad');"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "RF2 - Registrar Usuario de Servicios",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"documentoUsuario\": 9999,\n  \"nombre\": \"Usuario Prueba\",\n  \"correo\": \"prueba@mail.com\",\n  \"celular\": \"3001234567\"\n}" },
+        "url": { "raw": "{{baseUrl}}/api/usuarios", "host": ["{{baseUrl}}"], "path": ["api","usuarios"] }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
+              "var json = pm.response.json();",
+              "pm.environment.set('clienteId', json.documentoUsuario || 9999);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "RF3 - Registrar Usuario Conductor",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"documentoUsuario\": 11001,\n  \"nombre\": \"Conductor Prueba\",\n  \"correo\": \"conductor@mail.com\",\n  \"celular\": \"3007654321\"\n}" },
+        "url": { "raw": "{{baseUrl}}/api/usuarioconductores", "host": ["{{baseUrl}}"], "path": ["api","usuarioconductores"] }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
+              "var json = pm.response.json();",
+              "pm.environment.set('conductorId', json.documentoUsuario || 11001);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "RF4 - Registrar Vehículo",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"placa\": \"TEST123\",\n  \"tipo\": \"Carro\",\n  \"modelo\": \"2020\",\n  \"marca\": \"MarcaX\",\n  \"color\": \"Rojo\",\n  \"ciudadExpedicionPlaca\": \"Bogota\",\n  \"capacidadPasajeros\": 4,\n  \"documentoConductor\": {{conductorId}}\n}" },
+        "url": { "raw": "{{baseUrl}}/api/vehiculos", "host": ["{{baseUrl}}"], "path": ["api","vehiculos"] }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
+              "var json = pm.response.json();",
+              "pm.environment.set('vehiculoPlaca', json.placa || 'TEST123');"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "RF5 - Registrar Disponibilidad",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"dia\": 2,\n  \"horaInicio\": \"2025-11-15T08:00:00\",\n  \"horaFin\": \"2025-11-15T12:00:00\",\n  \"placaVehiculo\": \"{{vehiculoPlaca}}\"\n}" },
+        "url": { "raw": "{{baseUrl}}/api/disponibilidades", "host": ["{{baseUrl}}"], "path": ["api","disponibilidades"] }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
+              "var json = pm.response.json();",
+              "pm.environment.set('disponibilidadId', json.idDisponibilidad || json.id || '');"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "RF6 - Modificar Disponibilidad (PUT)",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"dia\": 2,\n  \"horaInicio\": \"2025-11-15T09:00:00\",\n  \"horaFin\": \"2025-11-15T13:00:00\",\n  \"placaVehiculo\": \"{{vehiculoPlaca}}\"\n}" },
+        "url": { "raw": "{{baseUrl}}/api/disponibilidades/{{disponibilidadId}}", "host": ["{{baseUrl}}"], "path": ["api","disponibilidades","{{disponibilidadId}}"] }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('status is 200', function () { pm.response.to.have.status(200); });"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "RF7 - Registrar Punto Geográfico",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"nombre\": \"Punto Prueba\",\n  \"direccion\": \"Calle Test 123\",\n  \"coordenadas\": \"-74.08,4.63\",\n  \"ciudad\": \"{{ciudadNombre}}\"\n}" },
+        "url": { "raw": "{{baseUrl}}/api/puntos", "host": ["{{baseUrl}}"], "path": ["api","puntos"] }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
+              "var json = pm.response.json();",
+              "pm.environment.set('origenId', json.idPuntoGeografico || json.id || '');"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "RF8 - Solicitar Servicio (crear servicio)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"tipoServicio\": \"Estandar\",\n  \"clienteId\": {{clienteId}},\n  \"origenId\": {{origenId}},\n  \"distanciaKm\": 10.5\n}" },
+        "url": { "raw": "{{baseUrl}}/api/servicios", "host": ["{{baseUrl}}"], "path": ["api","servicios"] }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
+              "var json = pm.response.json();",
+              "pm.environment.set('servicioId', json.idServicio || json.id || '');"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "RF9 - Registrar Viaje (marcar servicio completado)",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"horaFin\": \"2025-11-15T10:30:00\",\n  \"duracionMin\": 30,\n  \"distanciaKm\": 10.5,\n  \"costoTotal\": 10500\n}" },
+        "url": { "raw": "{{baseUrl}}/api/servicios/{{servicioId}}/complete", "host": ["{{baseUrl}}"], "path": ["api","servicios","{{servicioId}}","complete"] }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('status is 200', function () { pm.response.to.have.status(200); });"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "RF10 - Dejar revisión (usuario)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"emisorId\": {{clienteId}},\n  \"receptorId\": {{conductorId}},\n  \"calificacion\": 5,\n  \"comentario\": \"Excelente servicio\"\n}" },
+        "url": { "raw": "{{baseUrl}}/api/revisiones", "host": ["{{baseUrl}}"], "path": ["api","revisiones"] }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('status is 201', function () { pm.response.to.have.status(201); });"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "RF11 - Dejar revisión (conductor)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"emisorId\": {{conductorId}},\n  \"receptorId\": {{clienteId}},\n  \"calificacion\": 4,\n  \"comentario\": \"Buen pasajero\"\n}" },
+        "url": { "raw": "{{baseUrl}}/api/revisiones", "host": ["{{baseUrl}}"], "path": ["api","revisiones"] }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('status is 201', function () { pm.response.to.have.status(201); });"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    }
+  ]
+}

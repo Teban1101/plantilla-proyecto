@@ -1,0 +1,13 @@
+{
+  "id": "env-alpescab-local",
+  "name": "AlpesCab - Local",
+  "values": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/AlpesCab",
+      "enabled": true
+    }
+  ],
+  "timestamp": 0,
+  "synced": false
+}

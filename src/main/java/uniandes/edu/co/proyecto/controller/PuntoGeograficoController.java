@@ -37,6 +37,11 @@ public class PuntoGeograficoController {
 
     @PostMapping
     public ResponseEntity<PuntoGeografico> create(@Valid @RequestBody PuntoGeografico p) {
+        // Assign id manually if DB (Oracle) doesn't generate it
+        if (p.getIdPuntoGeografico() == null) {
+            Long max = puntoRepository.findMaxId();
+            p.setIdPuntoGeografico((max == null ? 1L : max + 1L));
+        }
         PuntoGeografico saved = puntoRepository.save(p);
         return ResponseEntity.status(201).body(saved);
     }

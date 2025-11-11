@@ -1,0 +1,3791 @@
+{
+  "collection": {
+    "_": {
+      "postman_id": "a1b2c3d4-e5f6-4012-9876-abcdef123456"
+    },
+    "item": [
+      {
+        "id": "f43901f5-2726-4163-8a20-8ea81236a8d6",
+        "name": "RF1 - Registrar Ciudad",
+        "request": {
+          "url": {
+            "path": [
+              "api",
+              "ciudades"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"nombreCiudad\": \"PruebaCiudad\",\n  \"pais\": \"Colombia\"\n}"
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "59ef5c96-73b2-423c-a4df-81bdc5091fee",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
+                "var json = pm.response.json();",
+                "pm.environment.set('ciudadNombre', json.nombreCiudad || 'PruebaCiudad');"
+              ],
+              "_lastExecutionId": "6c0228fd-c904-40b6-9135-2f1afa64d61a"
+            }
+          }
+        ]
+      },
+      {
+        "id": "fb18c8a6-0832-4f23-9ef5-1318353cef6e",
+        "name": "RF2 - Registrar Usuario de Servicios",
+        "request": {
+          "url": {
+            "path": [
+              "api",
+              "usuarios"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"documentoUsuario\": 9999,\n  \"nombre\": \"Usuario Prueba\",\n  \"correo\": \"prueba@mail.com\",\n  \"celular\": \"3001234567\"\n}"
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "ab3148de-0809-443e-bd5b-b52a9aea21fa",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
+                "var json = pm.response.json();",
+                "pm.environment.set('clienteId', json.documentoUsuario || 9999);"
+              ],
+              "_lastExecutionId": "6ec18920-e56f-4238-ab26-15493e73b749"
+            }
+          }
+        ]
+      },
+      {
+        "id": "4a1f6f9e-0201-43c3-a026-6f3157c0ec54",
+        "name": "RF3 - Registrar Usuario Conductor",
+        "request": {
+          "url": {
+            "path": [
+              "api",
+              "usuarioconductores"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"documentoUsuario\": 11001,\n  \"nombre\": \"Conductor Prueba\",\n  \"correo\": \"conductor@mail.com\",\n  \"celular\": \"3007654321\"\n}"
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "9ce2f08a-c875-4df9-a6e7-bfe2a86566af",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
+                "var json = pm.response.json();",
+                "pm.environment.set('conductorId', json.documentoUsuario || 11001);"
+              ],
+              "_lastExecutionId": "fd35ea86-dce9-47ab-9e1e-d60261f2a63f"
+            }
+          }
+        ]
+      },
+      {
+        "id": "3b197956-b424-488e-b58b-146775d3422f",
+        "name": "RF4 - Registrar Vehículo",
+        "request": {
+          "url": {
+            "path": [
+              "api",
+              "vehiculos"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"placa\": \"TEST123\",\n  \"tipo\": \"Carro\",\n  \"modelo\": \"2020\",\n  \"marca\": \"MarcaX\",\n  \"color\": \"Rojo\",\n  \"ciudadExpedicionPlaca\": \"Bogota\",\n  \"capacidadPasajeros\": 4,\n  \"documentoConductor\": {{conductorId}}\n}"
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "457640c4-6c23-4480-9566-3196713800f9",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
+                "var json = pm.response.json();",
+                "pm.environment.set('vehiculoPlaca', json.placa || 'TEST123');"
+              ],
+              "_lastExecutionId": "b95f7b01-c63c-4946-8179-60fd45360e05"
+            }
+          }
+        ]
+      },
+      {
+        "id": "20bb09c6-0ca8-4338-9094-689d5ab6f311",
+        "name": "RF5 - Registrar Disponibilidad",
+        "request": {
+          "url": {
+            "path": [
+              "api",
+              "disponibilidades"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"dia\": 2,\n  \"horaInicio\": \"2025-11-15T08:00:00\",\n  \"horaFin\": \"2025-11-15T12:00:00\",\n  \"placaVehiculo\": \"{{vehiculoPlaca}}\"\n}"
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "02ffd897-df23-4136-a2ff-9a4297305b75",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
+                "var json = pm.response.json();",
+                "pm.environment.set('disponibilidadId', json.idDisponibilidad || json.id || '');"
+              ],
+              "_lastExecutionId": "3a77285b-d1a9-4517-95ff-742ac38b0b65"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cd4cab3f-7d5e-46a3-a665-cbd3cd1c9943",
+        "name": "RF6 - Modificar Disponibilidad (PUT)",
+        "request": {
+          "url": {
+            "path": [
+              "api",
+              "disponibilidades",
+              "{{disponibilidadId}}"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "method": "PUT",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"dia\": 2,\n  \"horaInicio\": \"2025-11-15T09:00:00\",\n  \"horaFin\": \"2025-11-15T13:00:00\",\n  \"placaVehiculo\": \"{{vehiculoPlaca}}\"\n}"
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "820abdf6-236c-48ca-ac0a-0f53fb3e5bd8",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('status is 200', function () { pm.response.to.have.status(200); });"
+              ],
+              "_lastExecutionId": "cdd92cd7-633a-43be-8810-405b8a7f6501"
+            }
+          }
+        ]
+      },
+      {
+        "id": "5c7bb7df-1a37-45fb-a2c5-746e80cc35ef",
+        "name": "RF7 - Registrar Punto Geográfico",
+        "request": {
+          "url": {
+            "path": [
+              "api",
+              "puntos"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"nombre\": \"Punto Prueba\",\n  \"direccion\": \"Calle Test 123\",\n  \"coordenadas\": \"-74.08,4.63\",\n  \"ciudad\": \"{{ciudadNombre}}\"\n}"
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "5d904d70-812a-4939-82f4-7dd4aa1e6394",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
+                "var json = pm.response.json();",
+                "pm.environment.set('origenId', json.idPuntoGeografico || json.id || '');"
+              ],
+              "_lastExecutionId": "5c681017-06a7-4338-8055-1e5928236202"
+            }
+          }
+        ]
+      },
+      {
+        "id": "4266a1cf-b617-4831-9d0b-97bae6f9cfd6",
+        "name": "RF8 - Solicitar Servicio (crear servicio)",
+        "request": {
+          "url": {
+            "path": [
+              "api",
+              "servicios"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"tipoServicio\": \"Estandar\",\n  \"clienteId\": {{clienteId}},\n  \"origenId\": {{origenId}},\n  \"distanciaKm\": 10.5\n}"
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "84dbb73f-683a-4f8b-818e-5a2828232c97",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
+                "var json = pm.response.json();",
+                "pm.environment.set('servicioId', json.idServicio || json.id || '');"
+              ],
+              "_lastExecutionId": "47f2df1f-f91c-44de-a2dd-00c749dd8c91"
+            }
+          }
+        ]
+      },
+      {
+        "id": "77767613-a19a-497c-9084-00de89683204",
+        "name": "RF9 - Registrar Viaje (marcar servicio completado)",
+        "request": {
+          "url": {
+            "path": [
+              "api",
+              "servicios",
+              "{{servicioId}}",
+              "complete"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "method": "PUT",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"horaFin\": \"2025-11-15T10:30:00\",\n  \"duracionMin\": 30,\n  \"distanciaKm\": 10.5,\n  \"costoTotal\": 10500\n}"
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "d9b1e06d-4e39-4764-8b46-f2cbf448322c",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('status is 200', function () { pm.response.to.have.status(200); });"
+              ],
+              "_lastExecutionId": "cdee1d06-846c-42bd-b508-3dd0dc1f6f71"
+            }
+          }
+        ]
+      },
+      {
+        "id": "b889ed5a-b5f5-4c33-a5aa-03c888ebfb20",
+        "name": "RF10 - Dejar revisión (usuario)",
+        "request": {
+          "url": {
+            "path": [
+              "api",
+              "revisiones"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"emisorId\": {{clienteId}},\n  \"receptorId\": {{conductorId}},\n  \"calificacion\": 5,\n  \"comentario\": \"Excelente servicio\"\n}"
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "2efc0314-9af9-41c5-8d95-49b3f577b5d6",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('status is 201', function () { pm.response.to.have.status(201); });"
+              ],
+              "_lastExecutionId": "c927b9e5-02ac-4b78-a7a9-5b54d6e8f97a"
+            }
+          }
+        ]
+      },
+      {
+        "id": "38423bd6-3504-41e6-9178-88445df3cc40",
+        "name": "RF11 - Dejar revisión (conductor)",
+        "request": {
+          "url": {
+            "path": [
+              "api",
+              "revisiones"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"emisorId\": {{conductorId}},\n  \"receptorId\": {{clienteId}},\n  \"calificacion\": 4,\n  \"comentario\": \"Buen pasajero\"\n}"
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "7a89b7e6-7a3c-4f75-92c1-684c8d090143",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('status is 201', function () { pm.response.to.have.status(201); });"
+              ],
+              "_lastExecutionId": "be6f2cae-0367-4f8b-8228-107f80a794b1"
+            }
+          }
+        ]
+      }
+    ],
+    "event": [],
+    "variable": [],
+    "info": {
+      "_postman_id": "a1b2c3d4-e5f6-4012-9876-abcdef123456",
+      "name": "AlpesCab - RF Collection",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+      "description": {
+        "content": "Collection to test the 11 RF endpoints of the AlpesCab application (chained, with assertions).",
+        "type": "text/plain"
+      }
+    }
+  },
+  "environment": {
+    "id": "env-alpescab-local",
+    "name": "AlpesCab - Local",
+    "values": [
+      {
+        "type": "any",
+        "value": "http://localhost:8080/AlpesCab",
+        "key": "baseUrl"
+      },
+      {
+        "type": "any",
+        "value": "PruebaCiudad",
+        "key": "ciudadNombre"
+      },
+      {
+        "type": "any",
+        "value": 9999,
+        "key": "clienteId"
+      },
+      {
+        "type": "any",
+        "value": 11001,
+        "key": "conductorId"
+      },
+      {
+        "type": "any",
+        "value": "TEST123",
+        "key": "vehiculoPlaca"
+      },
+      {
+        "type": "any",
+        "value": 4103,
+        "key": "disponibilidadId"
+      },
+      {
+        "type": "any",
+        "value": 3203,
+        "key": "origenId"
+      },
+      {
+        "type": "any",
+        "value": 6503,
+        "key": "servicioId"
+      }
+    ]
+  },
+  "globals": {
+    "id": "ce2a3987-9e86-4082-aaf9-aa59658be06c",
+    "values": []
+  },
+  "run": {
+    "stats": {
+      "iterations": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "items": {
+        "total": 11,
+        "pending": 0,
+        "failed": 0
+      },
+      "scripts": {
+        "total": 11,
+        "pending": 0,
+        "failed": 0
+      },
+      "prerequests": {
+        "total": 11,
+        "pending": 0,
+        "failed": 0
+      },
+      "requests": {
+        "total": 11,
+        "pending": 0,
+        "failed": 0
+      },
+      "tests": {
+        "total": 11,
+        "pending": 0,
+        "failed": 0
+      },
+      "assertions": {
+        "total": 11,
+        "pending": 0,
+        "failed": 0
+      },
+      "testScripts": {
+        "total": 11,
+        "pending": 0,
+        "failed": 0
+      },
+      "prerequestScripts": {
+        "total": 0,
+        "pending": 0,
+        "failed": 0
+      }
+    },
+    "timings": {
+      "responseAverage": 81.36363636363636,
+      "responseMin": 48,
+      "responseMax": 236,
+      "responseSd": 54.964902400238714,
+      "dnsAverage": 0,
+      "dnsMin": 0,
+      "dnsMax": 0,
+      "dnsSd": 0,
+      "firstByteAverage": 0,
+      "firstByteMin": 0,
+      "firstByteMax": 0,
+      "firstByteSd": 0,
+      "started": 1762818792811,
+      "completed": 1762818794928
+    },
+    "executions": [
+      {
+        "cursor": {
+          "position": 0,
+          "iteration": 0,
+          "length": 11,
+          "cycles": 1,
+          "empty": false,
+          "eof": false,
+          "bof": true,
+          "cr": false,
+          "ref": "9314224a-9360-415b-ad00-271e9e9255d2",
+          "httpRequestId": "e1b18410-3efc-434b-bb59-5f7349305711"
+        },
+        "item": {
+          "id": "f43901f5-2726-4163-8a20-8ea81236a8d6",
+          "name": "RF1 - Registrar Ciudad",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "ciudades"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombreCiudad\": \"PruebaCiudad\",\n  \"pais\": \"Colombia\"\n}"
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "59ef5c96-73b2-423c-a4df-81bdc5091fee",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
+                  "var json = pm.response.json();",
+                  "pm.environment.set('ciudadNombre', json.nombreCiudad || 'PruebaCiudad');"
+                ],
+                "_lastExecutionId": "6c0228fd-c904-40b6-9135-2f1afa64d61a"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              "AlpesCab",
+              "api",
+              "ciudades"
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "6d7b3fbd-ad08-46b7-91c4-e3e9b49ee62c",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "localhost:8080",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "58",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"nombreCiudad\": \"PruebaCiudad\",\n  \"pais\": \"Colombia\"\n}"
+          }
+        },
+        "response": {
+          "id": "a2bae2eb-7202-4ff4-9778-2e6a7968ef4d",
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 10 Nov 2025 23:53:12 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              110,
+              111,
+              109,
+              98,
+              114,
+              101,
+              67,
+              105,
+              117,
+              100,
+              97,
+              100,
+              34,
+              58,
+              34,
+              80,
+              114,
+              117,
+              101,
+              98,
+              97,
+              67,
+              105,
+              117,
+              100,
+              97,
+              100,
+              34,
+              44,
+              34,
+              112,
+              97,
+              105,
+              115,
+              34,
+              58,
+              34,
+              67,
+              111,
+              108,
+              111,
+              109,
+              98,
+              105,
+              97,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 140,
+          "responseSize": 49
+        },
+        "id": "f43901f5-2726-4163-8a20-8ea81236a8d6",
+        "assertions": [
+          {
+            "assertion": "status is 201",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "246e74c4-10d5-4ea3-8cd6-f3cb26ea7b5d",
+          "length": 11,
+          "cycles": 1,
+          "position": 1,
+          "iteration": 0,
+          "httpRequestId": "1e812dcc-39e9-4f78-8fde-c6c4b89206d4"
+        },
+        "item": {
+          "id": "fb18c8a6-0832-4f23-9ef5-1318353cef6e",
+          "name": "RF2 - Registrar Usuario de Servicios",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "usuarios"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documentoUsuario\": 9999,\n  \"nombre\": \"Usuario Prueba\",\n  \"correo\": \"prueba@mail.com\",\n  \"celular\": \"3001234567\"\n}"
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ab3148de-0809-443e-bd5b-b52a9aea21fa",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
+                  "var json = pm.response.json();",
+                  "pm.environment.set('clienteId', json.documentoUsuario || 9999);"
+                ],
+                "_lastExecutionId": "6ec18920-e56f-4238-ab26-15493e73b749"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              "AlpesCab",
+              "api",
+              "usuarios"
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "8b929ebe-257f-463d-a6ce-a9096dfac97b",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "localhost:8080",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "118",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"documentoUsuario\": 9999,\n  \"nombre\": \"Usuario Prueba\",\n  \"correo\": \"prueba@mail.com\",\n  \"celular\": \"3001234567\"\n}"
+          }
+        },
+        "response": {
+          "id": "538b9ab1-7e17-48f0-9cd8-0471255158d6",
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 10 Nov 2025 23:53:12 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              100,
+              111,
+              99,
+              117,
+              109,
+              101,
+              110,
+              116,
+              111,
+              85,
+              115,
+              117,
+              97,
+              114,
+              105,
+              111,
+              34,
+              58,
+              57,
+              57,
+              57,
+              57,
+              44,
+              34,
+              110,
+              111,
+              109,
+              98,
+              114,
+              101,
+              34,
+              58,
+              34,
+              85,
+              115,
+              117,
+              97,
+              114,
+              105,
+              111,
+              32,
+              80,
+              114,
+              117,
+              101,
+              98,
+              97,
+              34,
+              44,
+              34,
+              99,
+              111,
+              114,
+              114,
+              101,
+              111,
+              34,
+              58,
+              34,
+              112,
+              114,
+              117,
+              101,
+              98,
+              97,
+              64,
+              109,
+              97,
+              105,
+              108,
+              46,
+              99,
+              111,
+              109,
+              34,
+              44,
+              34,
+              99,
+              101,
+              108,
+              117,
+              108,
+              97,
+              114,
+              34,
+              58,
+              34,
+              51,
+              48,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 52,
+          "responseSize": 101
+        },
+        "id": "fb18c8a6-0832-4f23-9ef5-1318353cef6e",
+        "assertions": [
+          {
+            "assertion": "status is 201",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "a3ddd3d1-d9c3-46ff-a6f8-e1053b52d2ed",
+          "length": 11,
+          "cycles": 1,
+          "position": 2,
+          "iteration": 0,
+          "httpRequestId": "0e8fabc4-7e2f-4e6e-9390-4422d12b45fe"
+        },
+        "item": {
+          "id": "4a1f6f9e-0201-43c3-a026-6f3157c0ec54",
+          "name": "RF3 - Registrar Usuario Conductor",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "usuarioconductores"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documentoUsuario\": 11001,\n  \"nombre\": \"Conductor Prueba\",\n  \"correo\": \"conductor@mail.com\",\n  \"celular\": \"3007654321\"\n}"
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9ce2f08a-c875-4df9-a6e7-bfe2a86566af",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
+                  "var json = pm.response.json();",
+                  "pm.environment.set('conductorId', json.documentoUsuario || 11001);"
+                ],
+                "_lastExecutionId": "fd35ea86-dce9-47ab-9e1e-d60261f2a63f"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              "AlpesCab",
+              "api",
+              "usuarioconductores"
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "1b72ac15-399e-47a5-8c58-160d32e161f6",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "localhost:8080",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "124",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"documentoUsuario\": 11001,\n  \"nombre\": \"Conductor Prueba\",\n  \"correo\": \"conductor@mail.com\",\n  \"celular\": \"3007654321\"\n}"
+          }
+        },
+        "response": {
+          "id": "592b840b-c75b-420e-ae98-a43b2ad912c6",
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 10 Nov 2025 23:53:12 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              100,
+              111,
+              99,
+              117,
+              109,
+              101,
+              110,
+              116,
+              111,
+              85,
+              115,
+              117,
+              97,
+              114,
+              105,
+              111,
+              34,
+              58,
+              49,
+              49,
+              48,
+              48,
+              49,
+              44,
+              34,
+              104,
+              97,
+              98,
+              105,
+              108,
+              105,
+              116,
+              97,
+              100,
+              111,
+              34,
+              58,
+              110,
+              117,
+              108,
+              108,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 54,
+          "responseSize": 44
+        },
+        "id": "4a1f6f9e-0201-43c3-a026-6f3157c0ec54",
+        "assertions": [
+          {
+            "assertion": "status is 201",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "2850249e-9346-46fc-8d79-a20eab6f5eb4",
+          "length": 11,
+          "cycles": 1,
+          "position": 3,
+          "iteration": 0,
+          "httpRequestId": "71bf9ad8-28bf-468a-abf6-c6662ae4f036"
+        },
+        "item": {
+          "id": "3b197956-b424-488e-b58b-146775d3422f",
+          "name": "RF4 - Registrar Vehículo",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "vehiculos"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"placa\": \"TEST123\",\n  \"tipo\": \"Carro\",\n  \"modelo\": \"2020\",\n  \"marca\": \"MarcaX\",\n  \"color\": \"Rojo\",\n  \"ciudadExpedicionPlaca\": \"Bogota\",\n  \"capacidadPasajeros\": 4,\n  \"documentoConductor\": {{conductorId}}\n}"
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "457640c4-6c23-4480-9566-3196713800f9",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
+                  "var json = pm.response.json();",
+                  "pm.environment.set('vehiculoPlaca', json.placa || 'TEST123');"
+                ],
+                "_lastExecutionId": "b95f7b01-c63c-4946-8179-60fd45360e05"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              "AlpesCab",
+              "api",
+              "vehiculos"
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "42f7b844-4c6c-4672-9976-f0f2f4d31dc9",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "localhost:8080",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "198",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"placa\": \"TEST123\",\n  \"tipo\": \"Carro\",\n  \"modelo\": \"2020\",\n  \"marca\": \"MarcaX\",\n  \"color\": \"Rojo\",\n  \"ciudadExpedicionPlaca\": \"Bogota\",\n  \"capacidadPasajeros\": 4,\n  \"documentoConductor\": 11001\n}"
+          }
+        },
+        "response": {
+          "id": "0691300e-8ea4-4123-b2df-0e4ed3b42d04",
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 10 Nov 2025 23:53:12 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              112,
+              108,
+              97,
+              99,
+              97,
+              34,
+              58,
+              34,
+              84,
+              69,
+              83,
+              84,
+              49,
+              50,
+              51,
+              34,
+              44,
+              34,
+              116,
+              105,
+              112,
+              111,
+              34,
+              58,
+              34,
+              67,
+              97,
+              114,
+              114,
+              111,
+              34,
+              44,
+              34,
+              109,
+              111,
+              100,
+              101,
+              108,
+              111,
+              34,
+              58,
+              34,
+              50,
+              48,
+              50,
+              48,
+              34,
+              44,
+              34,
+              109,
+              97,
+              114,
+              99,
+              97,
+              34,
+              58,
+              34,
+              77,
+              97,
+              114,
+              99,
+              97,
+              88,
+              34,
+              44,
+              34,
+              99,
+              111,
+              108,
+              111,
+              114,
+              34,
+              58,
+              34,
+              82,
+              111,
+              106,
+              111,
+              34,
+              44,
+              34,
+              99,
+              105,
+              117,
+              100,
+              97,
+              100,
+              69,
+              120,
+              112,
+              101,
+              100,
+              105,
+              99,
+              105,
+              111,
+              110,
+              80,
+              108,
+              97,
+              99,
+              97,
+              34,
+              58,
+              34,
+              66,
+              111,
+              103,
+              111,
+              116,
+              97,
+              34,
+              44,
+              34,
+              99,
+              97,
+              112,
+              97,
+              99,
+              105,
+              100,
+              97,
+              100,
+              80,
+              97,
+              115,
+              97,
+              106,
+              101,
+              114,
+              111,
+              115,
+              34,
+              58,
+              52,
+              44,
+              34,
+              100,
+              111,
+              99,
+              117,
+              109,
+              101,
+              110,
+              116,
+              111,
+              67,
+              111,
+              110,
+              100,
+              117,
+              99,
+              116,
+              111,
+              114,
+              34,
+              58,
+              49,
+              49,
+              48,
+              48,
+              49,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 50,
+          "responseSize": 165
+        },
+        "id": "3b197956-b424-488e-b58b-146775d3422f",
+        "assertions": [
+          {
+            "assertion": "status is 201",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "c5ebd08d-6e7c-4f6d-92c0-619c7f3eb6c7",
+          "length": 11,
+          "cycles": 1,
+          "position": 4,
+          "iteration": 0,
+          "httpRequestId": "b71fe986-fed2-416f-a95f-c6e142150690"
+        },
+        "item": {
+          "id": "20bb09c6-0ca8-4338-9094-689d5ab6f311",
+          "name": "RF5 - Registrar Disponibilidad",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "disponibilidades"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dia\": 2,\n  \"horaInicio\": \"2025-11-15T08:00:00\",\n  \"horaFin\": \"2025-11-15T12:00:00\",\n  \"placaVehiculo\": \"{{vehiculoPlaca}}\"\n}"
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "02ffd897-df23-4136-a2ff-9a4297305b75",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
+                  "var json = pm.response.json();",
+                  "pm.environment.set('disponibilidadId', json.idDisponibilidad || json.id || '');"
+                ],
+                "_lastExecutionId": "3a77285b-d1a9-4517-95ff-742ac38b0b65"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              "AlpesCab",
+              "api",
+              "disponibilidades"
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "cd58dc0a-87de-40a9-9590-65232cecc2d2",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "localhost:8080",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "119",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"dia\": 2,\n  \"horaInicio\": \"2025-11-15T08:00:00\",\n  \"horaFin\": \"2025-11-15T12:00:00\",\n  \"placaVehiculo\": \"TEST123\"\n}"
+          }
+        },
+        "response": {
+          "id": "e6030afa-47f4-4551-8bd7-0062a4dbf269",
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 10 Nov 2025 23:53:12 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              105,
+              100,
+              68,
+              105,
+              115,
+              112,
+              111,
+              110,
+              105,
+              98,
+              105,
+              108,
+              105,
+              100,
+              97,
+              100,
+              34,
+              58,
+              52,
+              49,
+              48,
+              51,
+              44,
+              34,
+              100,
+              105,
+              97,
+              34,
+              58,
+              50,
+              44,
+              34,
+              104,
+              111,
+              114,
+              97,
+              73,
+              110,
+              105,
+              99,
+              105,
+              111,
+              34,
+              58,
+              34,
+              50,
+              48,
+              50,
+              53,
+              45,
+              49,
+              49,
+              45,
+              49,
+              53,
+              84,
+              48,
+              56,
+              58,
+              48,
+              48,
+              58,
+              48,
+              48,
+              34,
+              44,
+              34,
+              104,
+              111,
+              114,
+              97,
+              70,
+              105,
+              110,
+              34,
+              58,
+              34,
+              50,
+              48,
+              50,
+              53,
+              45,
+              49,
+              49,
+              45,
+              49,
+              53,
+              84,
+              49,
+              50,
+              58,
+              48,
+              48,
+              58,
+              48,
+              48,
+              34,
+              44,
+              34,
+              112,
+              108,
+              97,
+              99,
+              97,
+              86,
+              101,
+              104,
+              105,
+              99,
+              117,
+              108,
+              111,
+              34,
+              58,
+              34,
+              84,
+              69,
+              83,
+              84,
+              49,
+              50,
+              51,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 63,
+          "responseSize": 126
+        },
+        "id": "20bb09c6-0ca8-4338-9094-689d5ab6f311",
+        "assertions": [
+          {
+            "assertion": "status is 201",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "c5909ced-2cb1-4c28-9fff-b3056bc52194",
+          "length": 11,
+          "cycles": 1,
+          "position": 5,
+          "iteration": 0,
+          "httpRequestId": "92ecf8be-9c5d-46b1-999e-a723bd725cb6"
+        },
+        "item": {
+          "id": "cd4cab3f-7d5e-46a3-a665-cbd3cd1c9943",
+          "name": "RF6 - Modificar Disponibilidad (PUT)",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "disponibilidades",
+                "{{disponibilidadId}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dia\": 2,\n  \"horaInicio\": \"2025-11-15T09:00:00\",\n  \"horaFin\": \"2025-11-15T13:00:00\",\n  \"placaVehiculo\": \"{{vehiculoPlaca}}\"\n}"
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "820abdf6-236c-48ca-ac0a-0f53fb3e5bd8",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('status is 200', function () { pm.response.to.have.status(200); });"
+                ],
+                "_lastExecutionId": "cdd92cd7-633a-43be-8810-405b8a7f6501"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              "AlpesCab",
+              "api",
+              "disponibilidades",
+              "4103"
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "bd8c406f-bcb1-415c-985d-d3be4cb45961",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "localhost:8080",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "119",
+              "system": true
+            }
+          ],
+          "method": "PUT",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"dia\": 2,\n  \"horaInicio\": \"2025-11-15T09:00:00\",\n  \"horaFin\": \"2025-11-15T13:00:00\",\n  \"placaVehiculo\": \"TEST123\"\n}"
+          }
+        },
+        "response": {
+          "id": "4d3a38bd-5666-4aa0-8bd4-afb713fa0b6e",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 10 Nov 2025 23:53:12 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              105,
+              100,
+              68,
+              105,
+              115,
+              112,
+              111,
+              110,
+              105,
+              98,
+              105,
+              108,
+              105,
+              100,
+              97,
+              100,
+              34,
+              58,
+              52,
+              49,
+              48,
+              51,
+              44,
+              34,
+              100,
+              105,
+              97,
+              34,
+              58,
+              50,
+              44,
+              34,
+              104,
+              111,
+              114,
+              97,
+              73,
+              110,
+              105,
+              99,
+              105,
+              111,
+              34,
+              58,
+              34,
+              50,
+              48,
+              50,
+              53,
+              45,
+              49,
+              49,
+              45,
+              49,
+              53,
+              84,
+              48,
+              57,
+              58,
+              48,
+              48,
+              58,
+              48,
+              48,
+              34,
+              44,
+              34,
+              104,
+              111,
+              114,
+              97,
+              70,
+              105,
+              110,
+              34,
+              58,
+              34,
+              50,
+              48,
+              50,
+              53,
+              45,
+              49,
+              49,
+              45,
+              49,
+              53,
+              84,
+              49,
+              51,
+              58,
+              48,
+              48,
+              58,
+              48,
+              48,
+              34,
+              44,
+              34,
+              112,
+              108,
+              97,
+              99,
+              97,
+              86,
+              101,
+              104,
+              105,
+              99,
+              117,
+              108,
+              111,
+              34,
+              58,
+              34,
+              84,
+              69,
+              83,
+              84,
+              49,
+              50,
+              51,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 63,
+          "responseSize": 126
+        },
+        "id": "cd4cab3f-7d5e-46a3-a665-cbd3cd1c9943",
+        "assertions": [
+          {
+            "assertion": "status is 200",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "dccbdf29-8af6-4888-99c7-f40209ac1a68",
+          "length": 11,
+          "cycles": 1,
+          "position": 6,
+          "iteration": 0,
+          "httpRequestId": "556bcbb9-32e9-45f4-ba9f-963d06f0613d"
+        },
+        "item": {
+          "id": "5c7bb7df-1a37-45fb-a2c5-746e80cc35ef",
+          "name": "RF7 - Registrar Punto Geográfico",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "puntos"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Punto Prueba\",\n  \"direccion\": \"Calle Test 123\",\n  \"coordenadas\": \"-74.08,4.63\",\n  \"ciudad\": \"{{ciudadNombre}}\"\n}"
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5d904d70-812a-4939-82f4-7dd4aa1e6394",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
+                  "var json = pm.response.json();",
+                  "pm.environment.set('origenId', json.idPuntoGeografico || json.id || '');"
+                ],
+                "_lastExecutionId": "5c681017-06a7-4338-8055-1e5928236202"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              "AlpesCab",
+              "api",
+              "puntos"
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "4e783aef-fa86-46e1-87c0-35b66773d329",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "localhost:8080",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "123",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"nombre\": \"Punto Prueba\",\n  \"direccion\": \"Calle Test 123\",\n  \"coordenadas\": \"-74.08,4.63\",\n  \"ciudad\": \"PruebaCiudad\"\n}"
+          }
+        },
+        "response": {
+          "id": "1ef85133-df3e-45ef-a965-c324c3165572",
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 10 Nov 2025 23:53:14 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              105,
+              100,
+              80,
+              117,
+              110,
+              116,
+              111,
+              71,
+              101,
+              111,
+              103,
+              114,
+              97,
+              102,
+              105,
+              99,
+              111,
+              34,
+              58,
+              51,
+              50,
+              48,
+              51,
+              44,
+              34,
+              110,
+              111,
+              109,
+              98,
+              114,
+              101,
+              34,
+              58,
+              34,
+              80,
+              117,
+              110,
+              116,
+              111,
+              32,
+              80,
+              114,
+              117,
+              101,
+              98,
+              97,
+              34,
+              44,
+              34,
+              100,
+              105,
+              114,
+              101,
+              99,
+              99,
+              105,
+              111,
+              110,
+              34,
+              58,
+              34,
+              67,
+              97,
+              108,
+              108,
+              101,
+              32,
+              84,
+              101,
+              115,
+              116,
+              32,
+              49,
+              50,
+              51,
+              34,
+              44,
+              34,
+              99,
+              111,
+              111,
+              114,
+              100,
+              101,
+              110,
+              97,
+              100,
+              97,
+              115,
+              34,
+              58,
+              34,
+              45,
+              55,
+              52,
+              46,
+              48,
+              56,
+              44,
+              52,
+              46,
+              54,
+              51,
+              34,
+              44,
+              34,
+              99,
+              105,
+              117,
+              100,
+              97,
+              100,
+              34,
+              58,
+              34,
+              80,
+              114,
+              117,
+              101,
+              98,
+              97,
+              67,
+              105,
+              117,
+              100,
+              97,
+              100,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 53,
+          "responseSize": 131
+        },
+        "id": "5c7bb7df-1a37-45fb-a2c5-746e80cc35ef",
+        "assertions": [
+          {
+            "assertion": "status is 201",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "90d33d60-5f87-48e6-a94e-6490f2b9e6fb",
+          "length": 11,
+          "cycles": 1,
+          "position": 7,
+          "iteration": 0,
+          "httpRequestId": "94a5042d-3467-4980-ab9f-4bb71f6d3cc3"
+        },
+        "item": {
+          "id": "4266a1cf-b617-4831-9d0b-97bae6f9cfd6",
+          "name": "RF8 - Solicitar Servicio (crear servicio)",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "servicios"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tipoServicio\": \"Estandar\",\n  \"clienteId\": {{clienteId}},\n  \"origenId\": {{origenId}},\n  \"distanciaKm\": 10.5\n}"
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "84dbb73f-683a-4f8b-818e-5a2828232c97",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
+                  "var json = pm.response.json();",
+                  "pm.environment.set('servicioId', json.idServicio || json.id || '');"
+                ],
+                "_lastExecutionId": "47f2df1f-f91c-44de-a2dd-00c749dd8c91"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              "AlpesCab",
+              "api",
+              "servicios"
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "53934cde-f93d-4316-94d6-f2c6ae9f1d69",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "localhost:8080",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "96",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"tipoServicio\": \"Estandar\",\n  \"clienteId\": 9999,\n  \"origenId\": 3203,\n  \"distanciaKm\": 10.5\n}"
+          }
+        },
+        "response": {
+          "id": "60ebd726-06ec-4cdf-ad0c-259238ba48cf",
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 10 Nov 2025 23:53:14 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              105,
+              100,
+              83,
+              101,
+              114,
+              118,
+              105,
+              99,
+              105,
+              111,
+              34,
+              58,
+              54,
+              53,
+              48,
+              51,
+              44,
+              34,
+              116,
+              105,
+              112,
+              111,
+              83,
+              101,
+              114,
+              118,
+              105,
+              99,
+              105,
+              111,
+              34,
+              58,
+              34,
+              69,
+              115,
+              116,
+              97,
+              110,
+              100,
+              97,
+              114,
+              34,
+              44,
+              34,
+              99,
+              108,
+              105,
+              101,
+              110,
+              116,
+              101,
+              73,
+              100,
+              34,
+              58,
+              57,
+              57,
+              57,
+              57,
+              44,
+              34,
+              99,
+              111,
+              110,
+              100,
+              117,
+              99,
+              116,
+              111,
+              114,
+              73,
+              100,
+              34,
+              58,
+              49,
+              49,
+              48,
+              48,
+              49,
+              44,
+              34,
+              111,
+              114,
+              105,
+              103,
+              101,
+              110,
+              73,
+              100,
+              34,
+              58,
+              51,
+              50,
+              48,
+              51,
+              44,
+              34,
+              100,
+              105,
+              115,
+              116,
+              97,
+              110,
+              99,
+              105,
+              97,
+              75,
+              109,
+              34,
+              58,
+              49,
+              48,
+              46,
+              53,
+              44,
+              34,
+              104,
+              111,
+              114,
+              97,
+              73,
+              110,
+              105,
+              99,
+              105,
+              111,
+              34,
+              58,
+              34,
+              50,
+              48,
+              50,
+              53,
+              45,
+              49,
+              49,
+              45,
+              49,
+              48,
+              84,
+              49,
+              56,
+              58,
+              53,
+              51,
+              58,
+              49,
+              52,
+              46,
+              50,
+              57,
+              52,
+              55,
+              49,
+              57,
+              51,
+              34,
+              44,
+              34,
+              104,
+              111,
+              114,
+              97,
+              70,
+              105,
+              110,
+              34,
+              58,
+              34,
+              50,
+              48,
+              50,
+              53,
+              45,
+              49,
+              49,
+              45,
+              49,
+              48,
+              84,
+              49,
+              56,
+              58,
+              53,
+              51,
+              58,
+              49,
+              52,
+              46,
+              50,
+              57,
+              52,
+              55,
+              49,
+              57,
+              51,
+              34,
+              44,
+              34,
+              100,
+              117,
+              114,
+              97,
+              99,
+              105,
+              111,
+              110,
+              77,
+              105,
+              110,
+              34,
+              58,
+              48,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 236,
+          "responseSize": 216
+        },
+        "id": "4266a1cf-b617-4831-9d0b-97bae6f9cfd6",
+        "assertions": [
+          {
+            "assertion": "status is 201",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "5dc799f7-7967-4cc2-bfc5-657556c9ad7e",
+          "length": 11,
+          "cycles": 1,
+          "position": 8,
+          "iteration": 0,
+          "httpRequestId": "88e002ca-1cf7-44f8-840c-d605d5a32bb8"
+        },
+        "item": {
+          "id": "77767613-a19a-497c-9084-00de89683204",
+          "name": "RF9 - Registrar Viaje (marcar servicio completado)",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "servicios",
+                "{{servicioId}}",
+                "complete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"horaFin\": \"2025-11-15T10:30:00\",\n  \"duracionMin\": 30,\n  \"distanciaKm\": 10.5,\n  \"costoTotal\": 10500\n}"
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d9b1e06d-4e39-4764-8b46-f2cbf448322c",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('status is 200', function () { pm.response.to.have.status(200); });"
+                ],
+                "_lastExecutionId": "cdee1d06-846c-42bd-b508-3dd0dc1f6f71"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              "AlpesCab",
+              "api",
+              "servicios",
+              "6503",
+              "complete"
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "eb0e639d-dc9b-4623-af68-15136269d6b8",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "localhost:8080",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "105",
+              "system": true
+            }
+          ],
+          "method": "PUT",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"horaFin\": \"2025-11-15T10:30:00\",\n  \"duracionMin\": 30,\n  \"distanciaKm\": 10.5,\n  \"costoTotal\": 10500\n}"
+          }
+        },
+        "response": {
+          "id": "7df75c5d-ee22-4392-a3a2-5c0df41523d4",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 10 Nov 2025 23:53:14 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              105,
+              100,
+              83,
+              101,
+              114,
+              118,
+              105,
+              99,
+              105,
+              111,
+              34,
+              58,
+              54,
+              53,
+              48,
+              51,
+              44,
+              34,
+              116,
+              105,
+              112,
+              111,
+              83,
+              101,
+              114,
+              118,
+              105,
+              99,
+              105,
+              111,
+              34,
+              58,
+              34,
+              69,
+              115,
+              116,
+              97,
+              110,
+              100,
+              97,
+              114,
+              34,
+              44,
+              34,
+              99,
+              108,
+              105,
+              101,
+              110,
+              116,
+              101,
+              73,
+              100,
+              34,
+              58,
+              57,
+              57,
+              57,
+              57,
+              44,
+              34,
+              99,
+              111,
+              110,
+              100,
+              117,
+              99,
+              116,
+              111,
+              114,
+              73,
+              100,
+              34,
+              58,
+              49,
+              49,
+              48,
+              48,
+              49,
+              44,
+              34,
+              111,
+              114,
+              105,
+              103,
+              101,
+              110,
+              73,
+              100,
+              34,
+              58,
+              51,
+              50,
+              48,
+              51,
+              44,
+              34,
+              100,
+              105,
+              115,
+              116,
+              97,
+              110,
+              99,
+              105,
+              97,
+              75,
+              109,
+              34,
+              58,
+              49,
+              48,
+              46,
+              53,
+              44,
+              34,
+              104,
+              111,
+              114,
+              97,
+              73,
+              110,
+              105,
+              99,
+              105,
+              111,
+              34,
+              58,
+              34,
+              50,
+              48,
+              50,
+              53,
+              45,
+              49,
+              49,
+              45,
+              49,
+              48,
+              84,
+              49,
+              56,
+              58,
+              53,
+              51,
+              58,
+              49,
+              52,
+              46,
+              50,
+              57,
+              52,
+              55,
+              49,
+              57,
+              34,
+              44,
+              34,
+              104,
+              111,
+              114,
+              97,
+              70,
+              105,
+              110,
+              34,
+              58,
+              34,
+              50,
+              48,
+              50,
+              53,
+              45,
+              49,
+              49,
+              45,
+              49,
+              53,
+              84,
+              49,
+              48,
+              58,
+              51,
+              48,
+              58,
+              48,
+              48,
+              34,
+              44,
+              34,
+              100,
+              117,
+              114,
+              97,
+              99,
+              105,
+              111,
+              110,
+              77,
+              105,
+              110,
+              34,
+              58,
+              51,
+              48,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 55,
+          "responseSize": 208
+        },
+        "id": "77767613-a19a-497c-9084-00de89683204",
+        "assertions": [
+          {
+            "assertion": "status is 200",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "c6612a41-ab7f-42e7-8f92-b5187dd969b7",
+          "length": 11,
+          "cycles": 1,
+          "position": 9,
+          "iteration": 0,
+          "httpRequestId": "d54164bb-057b-4200-b516-7762acb92dd0"
+        },
+        "item": {
+          "id": "b889ed5a-b5f5-4c33-a5aa-03c888ebfb20",
+          "name": "RF10 - Dejar revisión (usuario)",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "revisiones"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"emisorId\": {{clienteId}},\n  \"receptorId\": {{conductorId}},\n  \"calificacion\": 5,\n  \"comentario\": \"Excelente servicio\"\n}"
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2efc0314-9af9-41c5-8d95-49b3f577b5d6",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('status is 201', function () { pm.response.to.have.status(201); });"
+                ],
+                "_lastExecutionId": "c927b9e5-02ac-4b78-a7a9-5b54d6e8f97a"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              "AlpesCab",
+              "api",
+              "revisiones"
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "e326b5bd-dd83-4832-84fb-900f898a2306",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "localhost:8080",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "104",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"emisorId\": 9999,\n  \"receptorId\": 11001,\n  \"calificacion\": 5,\n  \"comentario\": \"Excelente servicio\"\n}"
+          }
+        },
+        "response": {
+          "id": "4702dc7b-da24-4789-9113-288d40bf8def",
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 10 Nov 2025 23:53:14 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              105,
+              100,
+              82,
+              101,
+              118,
+              105,
+              115,
+              105,
+              111,
+              110,
+              34,
+              58,
+              57,
+              48,
+              54,
+              53,
+              48,
+              53,
+              44,
+              34,
+              101,
+              109,
+              105,
+              115,
+              111,
+              114,
+              73,
+              100,
+              34,
+              58,
+              57,
+              57,
+              57,
+              57,
+              44,
+              34,
+              114,
+              101,
+              99,
+              101,
+              112,
+              116,
+              111,
+              114,
+              73,
+              100,
+              34,
+              58,
+              49,
+              49,
+              48,
+              48,
+              49,
+              44,
+              34,
+              99,
+              97,
+              108,
+              105,
+              102,
+              105,
+              99,
+              97,
+              99,
+              105,
+              111,
+              110,
+              34,
+              58,
+              53,
+              44,
+              34,
+              99,
+              111,
+              109,
+              101,
+              110,
+              116,
+              97,
+              114,
+              105,
+              111,
+              34,
+              58,
+              34,
+              69,
+              120,
+              99,
+              101,
+              108,
+              101,
+              110,
+              116,
+              101,
+              32,
+              115,
+              101,
+              114,
+              118,
+              105,
+              99,
+              105,
+              111,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 48,
+          "responseSize": 107
+        },
+        "id": "b889ed5a-b5f5-4c33-a5aa-03c888ebfb20",
+        "assertions": [
+          {
+            "assertion": "status is 201",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "585df57e-982b-414f-b959-c050957f6e22",
+          "length": 11,
+          "cycles": 1,
+          "position": 10,
+          "iteration": 0,
+          "httpRequestId": "abcfb929-aa75-46eb-92e1-a2b07ffba245"
+        },
+        "item": {
+          "id": "38423bd6-3504-41e6-9178-88445df3cc40",
+          "name": "RF11 - Dejar revisión (conductor)",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "revisiones"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"emisorId\": {{conductorId}},\n  \"receptorId\": {{clienteId}},\n  \"calificacion\": 4,\n  \"comentario\": \"Buen pasajero\"\n}"
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7a89b7e6-7a3c-4f75-92c1-684c8d090143",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('status is 201', function () { pm.response.to.have.status(201); });"
+                ],
+                "_lastExecutionId": "be6f2cae-0367-4f8b-8228-107f80a794b1"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              "AlpesCab",
+              "api",
+              "revisiones"
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "5493d5e9-0ff6-4228-8c83-9a0cc1f2ad3f",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "localhost:8080",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "99",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"emisorId\": 11001,\n  \"receptorId\": 9999,\n  \"calificacion\": 4,\n  \"comentario\": \"Buen pasajero\"\n}"
+          }
+        },
+        "response": {
+          "id": "0789f2ab-6b76-4ae6-96ae-50b2a7f27e3c",
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 10 Nov 2025 23:53:14 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              105,
+              100,
+              82,
+              101,
+              118,
+              105,
+              115,
+              105,
+              111,
+              110,
+              34,
+              58,
+              57,
+              48,
+              54,
+              53,
+              48,
+              54,
+              44,
+              34,
+              101,
+              109,
+              105,
+              115,
+              111,
+              114,
+              73,
+              100,
+              34,
+              58,
+              49,
+              49,
+              48,
+              48,
+              49,
+              44,
+              34,
+              114,
+              101,
+              99,
+              101,
+              112,
+              116,
+              111,
+              114,
+              73,
+              100,
+              34,
+              58,
+              57,
+              57,
+              57,
+              57,
+              44,
+              34,
+              99,
+              97,
+              108,
+              105,
+              102,
+              105,
+              99,
+              97,
+              99,
+              105,
+              111,
+              110,
+              34,
+              58,
+              52,
+              44,
+              34,
+              99,
+              111,
+              109,
+              101,
+              110,
+              116,
+              97,
+              114,
+              105,
+              111,
+              34,
+              58,
+              34,
+              66,
+              117,
+              101,
+              110,
+              32,
+              112,
+              97,
+              115,
+              97,
+              106,
+              101,
+              114,
+              111,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 81,
+          "responseSize": 102
+        },
+        "id": "38423bd6-3504-41e6-9178-88445df3cc40",
+        "assertions": [
+          {
+            "assertion": "status is 201",
+            "skipped": false
+          }
+        ]
+      }
+    ],
+    "transfers": {
+      "responseTotal": 1375
+    },
+    "failures": [],
+    "error": null
+  }
+}
