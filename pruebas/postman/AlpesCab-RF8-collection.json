@@ -1,0 +1,108 @@
+{
+  "info": {
+    "name": "AlpesCab - RF8 Only",
+    "_postman_id": "rf8-only-collection",
+    "description": "Minimal collection to test RF8 transactional behavior: create cliente, origen, solicitar servicio and verify conductor availability.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Cliente (for RF8)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"documentoUsuario\": 999900,\n  \"nombre\": \"TestClienteRF8\",\n  \"correo\": \"rf8@test.local\",\n  \"celular\": \"3000000000\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/usuarios", "host": ["{{baseUrl}}"], "path": ["api","usuarios"] }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
+              "var json = pm.response.json();",
+              "pm.environment.set('clienteId', json.documentoUsuario || 999900);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Create Origen (Punto) (for RF8)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"PuntoRF8\",\n  \"direccion\": \"Calle RF8\",\n  \"coordenadas\": \"-74.08,4.63\",\n  \"ciudad\": \"PruebaCiudad\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/puntos", "host": ["{{baseUrl}}"], "path": ["api","puntos"] }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
+              "var json = pm.response.json();",
+              "pm.environment.set('origenId', json.idPuntoGeografico || json.id || '');"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "RF8 - Solicitar Servicio (crear servicio)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"tipoServicio\": \"Estandar\",\n  \"clienteId\": {{clienteId}},\n  \"origenId\": {{origenId}},\n  \"distanciaKm\": 10.5\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/servicios", "host": ["{{baseUrl}}"], "path": ["api","servicios"] }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
+              "var json = pm.response.json();",
+              "pm.environment.set('servicioId', json.idServicio || json.id || '');",
+              "pm.environment.set('conductorId', json.conductorId || '');",
+              "pm.test('conductor assigned', function () { pm.expect(json.conductorId).to.exist; });"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get Assigned Conductor",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{baseUrl}}/api/usuarioconductores/{{conductorId}}", "host": ["{{baseUrl}}"], "path": ["api","usuarioconductores","{{conductorId}}"] }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('status is 200', function () { pm.response.to.have.status(200); });",
+              "var json = pm.response.json();",
+              "pm.test('conductor is unavailable (habilitado == \"0\")', function () { pm.expect(json.habilitado).to.eql('0'); });"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    }
+  ]
+}

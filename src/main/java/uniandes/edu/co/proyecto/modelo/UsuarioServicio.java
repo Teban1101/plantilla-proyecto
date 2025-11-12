@@ -11,7 +11,9 @@ import java.util.Date;
 public class UsuarioServicio {
 
     @Id
-    @Column(name = "DOCUMENTO_USUARIO")
+    // DB contains a column named DOCUMENTO (seed scripts handle both variants),
+    // map to DOCUMENTO so inserts populate the actual PK column and avoid ORA-01400.
+    @Column(name = "DOCUMENTO")
     private Long documentoUsuario;
 
     @Column(name = "NUMEROTARJETA")

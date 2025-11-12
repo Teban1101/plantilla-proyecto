@@ -1,0 +1,18 @@
+{
+  "id": "rf8-env",
+  "name": "AlpesCab RF8 Environment",
+  "values": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/AlpesCab",
+      "enabled": true
+    },
+    { "key": "clienteId", "value": "", "enabled": true },
+    { "key": "origenId", "value": "", "enabled": true },
+    { "key": "servicioId", "value": "", "enabled": true },
+    { "key": "conductorId", "value": "", "enabled": true }
+  ],
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2025-11-11T00:00:00Z",
+  "_postman_exported_using": "Postman/10.0"
+}

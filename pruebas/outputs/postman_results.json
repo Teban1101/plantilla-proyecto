@@ -5,7 +5,7 @@
     },
     "item": [
       {
-        "id": "f43901f5-2726-4163-8a20-8ea81236a8d6",
+        "id": "be2d374e-0646-4d97-b725-897992833920",
         "name": "RF1 - Registrar Ciudad",
         "request": {
           "url": {
@@ -36,20 +36,20 @@
           {
             "listen": "test",
             "script": {
-              "id": "59ef5c96-73b2-423c-a4df-81bdc5091fee",
+              "id": "dda86f1d-3bbf-4cbe-8430-f3eacee1e5d9",
               "type": "text/javascript",
               "exec": [
                 "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
                 "var json = pm.response.json();",
                 "pm.environment.set('ciudadNombre', json.nombreCiudad || 'PruebaCiudad');"
               ],
-              "_lastExecutionId": "6c0228fd-c904-40b6-9135-2f1afa64d61a"
+              "_lastExecutionId": "1ee0a880-396a-4ab7-8507-fb7896651370"
             }
           }
         ]
       },
       {
-        "id": "fb18c8a6-0832-4f23-9ef5-1318353cef6e",
+        "id": "57c1153f-7a4a-4d47-93bc-0adee96517c5",
         "name": "RF2 - Registrar Usuario de Servicios",
         "request": {
           "url": {
@@ -80,20 +80,20 @@
           {
             "listen": "test",
             "script": {
-              "id": "ab3148de-0809-443e-bd5b-b52a9aea21fa",
+              "id": "4f708aca-3439-4417-a4ed-eb17ebd08f35",
               "type": "text/javascript",
               "exec": [
                 "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
                 "var json = pm.response.json();",
                 "pm.environment.set('clienteId', json.documentoUsuario || 9999);"
               ],
-              "_lastExecutionId": "6ec18920-e56f-4238-ab26-15493e73b749"
+              "_lastExecutionId": "22107735-9b4c-404f-8717-ac6d0de06706"
             }
           }
         ]
       },
       {
-        "id": "4a1f6f9e-0201-43c3-a026-6f3157c0ec54",
+        "id": "e1af387e-e122-4db1-beca-08843f51ca73",
         "name": "RF3 - Registrar Usuario Conductor",
         "request": {
           "url": {
@@ -124,20 +124,20 @@
           {
             "listen": "test",
             "script": {
-              "id": "9ce2f08a-c875-4df9-a6e7-bfe2a86566af",
+              "id": "8b4004d5-196d-44a3-875a-71471c8142e4",
               "type": "text/javascript",
               "exec": [
                 "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
                 "var json = pm.response.json();",
                 "pm.environment.set('conductorId', json.documentoUsuario || 11001);"
               ],
-              "_lastExecutionId": "fd35ea86-dce9-47ab-9e1e-d60261f2a63f"
+              "_lastExecutionId": "87203ccf-fd7e-4dfb-8df4-15c1941c8998"
             }
           }
         ]
       },
       {
-        "id": "3b197956-b424-488e-b58b-146775d3422f",
+        "id": "b9a99b0e-e6f5-4d76-b3f9-a34aeb3e48c9",
         "name": "RF4 - Registrar Vehículo",
         "request": {
           "url": {
@@ -168,20 +168,20 @@
           {
             "listen": "test",
             "script": {
-              "id": "457640c4-6c23-4480-9566-3196713800f9",
+              "id": "aaef50bc-b8be-40ed-b407-864905ff769a",
               "type": "text/javascript",
               "exec": [
                 "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
                 "var json = pm.response.json();",
                 "pm.environment.set('vehiculoPlaca', json.placa || 'TEST123');"
               ],
-              "_lastExecutionId": "b95f7b01-c63c-4946-8179-60fd45360e05"
+              "_lastExecutionId": "722fffde-15ce-41fb-9d5e-89c286e03d4b"
             }
           }
         ]
       },
       {
-        "id": "20bb09c6-0ca8-4338-9094-689d5ab6f311",
+        "id": "713e5da8-91bc-463e-a6ed-dbd034eef724",
         "name": "RF5 - Registrar Disponibilidad",
         "request": {
           "url": {
@@ -212,20 +212,20 @@
           {
             "listen": "test",
             "script": {
-              "id": "02ffd897-df23-4136-a2ff-9a4297305b75",
+              "id": "803b9833-3819-4d62-a254-dbcdffcbfc09",
               "type": "text/javascript",
               "exec": [
                 "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
                 "var json = pm.response.json();",
                 "pm.environment.set('disponibilidadId', json.idDisponibilidad || json.id || '');"
               ],
-              "_lastExecutionId": "3a77285b-d1a9-4517-95ff-742ac38b0b65"
+              "_lastExecutionId": "96a07fb3-36e9-48c3-8682-30e2315b2621"
             }
           }
         ]
       },
       {
-        "id": "cd4cab3f-7d5e-46a3-a665-cbd3cd1c9943",
+        "id": "337b1072-a14e-4f78-b177-1553da8d40cc",
         "name": "RF6 - Modificar Disponibilidad (PUT)",
         "request": {
           "url": {
@@ -257,18 +257,18 @@
           {
             "listen": "test",
             "script": {
-              "id": "820abdf6-236c-48ca-ac0a-0f53fb3e5bd8",
+              "id": "97b7afad-266a-416f-bda6-efe9f04d2d0c",
               "type": "text/javascript",
               "exec": [
                 "pm.test('status is 200', function () { pm.response.to.have.status(200); });"
               ],
-              "_lastExecutionId": "cdd92cd7-633a-43be-8810-405b8a7f6501"
+              "_lastExecutionId": "79d5d1d3-4bb3-4826-8502-441d9e042bab"
             }
           }
         ]
       },
       {
-        "id": "5c7bb7df-1a37-45fb-a2c5-746e80cc35ef",
+        "id": "f52d34ab-6c54-49d3-8636-88b2cbcd079a",
         "name": "RF7 - Registrar Punto Geográfico",
         "request": {
           "url": {
@@ -299,20 +299,20 @@
           {
             "listen": "test",
             "script": {
-              "id": "5d904d70-812a-4939-82f4-7dd4aa1e6394",
+              "id": "2a7d34f2-11ef-4be2-b26e-73a44b96e07b",
               "type": "text/javascript",
               "exec": [
                 "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
                 "var json = pm.response.json();",
                 "pm.environment.set('origenId', json.idPuntoGeografico || json.id || '');"
               ],
-              "_lastExecutionId": "5c681017-06a7-4338-8055-1e5928236202"
+              "_lastExecutionId": "1a8db392-8717-4069-a06f-ce3af33916c7"
             }
           }
         ]
       },
       {
-        "id": "4266a1cf-b617-4831-9d0b-97bae6f9cfd6",
+        "id": "3fe7b010-dc47-49a2-91ed-ca7706071147",
         "name": "RF8 - Solicitar Servicio (crear servicio)",
         "request": {
           "url": {
@@ -343,20 +343,20 @@
           {
             "listen": "test",
             "script": {
-              "id": "84dbb73f-683a-4f8b-818e-5a2828232c97",
+              "id": "1444a432-d0e7-465f-a815-ffbd1db3c223",
               "type": "text/javascript",
               "exec": [
                 "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
                 "var json = pm.response.json();",
                 "pm.environment.set('servicioId', json.idServicio || json.id || '');"
               ],
-              "_lastExecutionId": "47f2df1f-f91c-44de-a2dd-00c749dd8c91"
+              "_lastExecutionId": "4475f6f4-52cf-467c-9fd1-ad72b32db373"
             }
           }
         ]
       },
       {
-        "id": "77767613-a19a-497c-9084-00de89683204",
+        "id": "fb69e79f-fd7e-40aa-8e62-1697936ebf2b",
         "name": "RF9 - Registrar Viaje (marcar servicio completado)",
         "request": {
           "url": {
@@ -389,18 +389,18 @@
           {
             "listen": "test",
             "script": {
-              "id": "d9b1e06d-4e39-4764-8b46-f2cbf448322c",
+              "id": "7815238d-cd05-4066-b691-02495a9b8668",
               "type": "text/javascript",
               "exec": [
                 "pm.test('status is 200', function () { pm.response.to.have.status(200); });"
               ],
-              "_lastExecutionId": "cdee1d06-846c-42bd-b508-3dd0dc1f6f71"
+              "_lastExecutionId": "8d9cb727-c075-47cf-a43e-aaf4ab5fcdcf"
             }
           }
         ]
       },
       {
-        "id": "b889ed5a-b5f5-4c33-a5aa-03c888ebfb20",
+        "id": "628e91ac-4b55-475c-aadd-acdf92d26a68",
         "name": "RF10 - Dejar revisión (usuario)",
         "request": {
           "url": {
@@ -431,18 +431,18 @@
           {
             "listen": "test",
             "script": {
-              "id": "2efc0314-9af9-41c5-8d95-49b3f577b5d6",
+              "id": "be36b3cb-8d74-4136-9ecb-404d73a4f431",
               "type": "text/javascript",
               "exec": [
                 "pm.test('status is 201', function () { pm.response.to.have.status(201); });"
               ],
-              "_lastExecutionId": "c927b9e5-02ac-4b78-a7a9-5b54d6e8f97a"
+              "_lastExecutionId": "de951eaf-c0f3-4d13-a242-b1c65cc8dea1"
             }
           }
         ]
       },
       {
-        "id": "38423bd6-3504-41e6-9178-88445df3cc40",
+        "id": "54665140-a54c-4443-a3d7-702077589a04",
         "name": "RF11 - Dejar revisión (conductor)",
         "request": {
           "url": {
@@ -473,12 +473,12 @@
           {
             "listen": "test",
             "script": {
-              "id": "7a89b7e6-7a3c-4f75-92c1-684c8d090143",
+              "id": "bd9c5f6f-fca2-4e5b-a3dc-39502e999d2b",
               "type": "text/javascript",
               "exec": [
                 "pm.test('status is 201', function () { pm.response.to.have.status(201); });"
               ],
-              "_lastExecutionId": "be6f2cae-0367-4f8b-8228-107f80a794b1"
+              "_lastExecutionId": "cfc3f7fa-7c6d-498c-8889-188fc0fc58b5"
             }
           }
         ]
@@ -527,23 +527,23 @@
       },
       {
         "type": "any",
-        "value": 4103,
+        "value": 4104,
         "key": "disponibilidadId"
       },
       {
         "type": "any",
-        "value": 3203,
+        "value": 3206,
         "key": "origenId"
       },
       {
         "type": "any",
-        "value": 6503,
+        "value": 6506,
         "key": "servicioId"
       }
     ]
   },
   "globals": {
-    "id": "ce2a3987-9e86-4082-aaf9-aa59658be06c",
+    "id": "16aef9a2-5f72-4a4b-a4e1-68411535a9e3",
     "values": []
   },
   "run": {
@@ -595,10 +595,10 @@
       }
     },
     "timings": {
-      "responseAverage": 81.36363636363636,
-      "responseMin": 48,
-      "responseMax": 236,
-      "responseSd": 54.964902400238714,
+      "responseAverage": 64.18181818181819,
+      "responseMin": 29,
+      "responseMax": 161,
+      "responseSd": 33.9968399114821,
       "dnsAverage": 0,
       "dnsMin": 0,
       "dnsMax": 0,
@@ -607,8 +607,8 @@
       "firstByteMin": 0,
       "firstByteMax": 0,
       "firstByteSd": 0,
-      "started": 1762818792811,
-      "completed": 1762818794928
+      "started": 1762902332887,
+      "completed": 1762902334547
     },
     "executions": [
       {
@@ -621,11 +621,11 @@
           "eof": false,
           "bof": true,
           "cr": false,
-          "ref": "9314224a-9360-415b-ad00-271e9e9255d2",
-          "httpRequestId": "e1b18410-3efc-434b-bb59-5f7349305711"
+          "ref": "71914b2c-454a-412c-8180-8fc19ab5cd09",
+          "httpRequestId": "3693703e-1df9-45c0-bd02-ad82023fff84"
         },
         "item": {
-          "id": "f43901f5-2726-4163-8a20-8ea81236a8d6",
+          "id": "be2d374e-0646-4d97-b725-897992833920",
           "name": "RF1 - Registrar Ciudad",
           "request": {
             "url": {
@@ -656,14 +656,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "59ef5c96-73b2-423c-a4df-81bdc5091fee",
+                "id": "dda86f1d-3bbf-4cbe-8430-f3eacee1e5d9",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
                   "var json = pm.response.json();",
                   "pm.environment.set('ciudadNombre', json.nombreCiudad || 'PruebaCiudad');"
                 ],
-                "_lastExecutionId": "6c0228fd-c904-40b6-9135-2f1afa64d61a"
+                "_lastExecutionId": "1ee0a880-396a-4ab7-8507-fb7896651370"
               }
             }
           ]
@@ -705,7 +705,7 @@
             },
             {
               "key": "Postman-Token",
-              "value": "6d7b3fbd-ad08-46b7-91c4-e3e9b49ee62c",
+              "value": "4b5554ec-1a68-4366-83c3-a9dbb853c2ee",
               "system": true
             },
             {
@@ -736,7 +736,7 @@
           }
         },
         "response": {
-          "id": "a2bae2eb-7202-4ff4-9778-2e6a7968ef4d",
+          "id": "c2c2048f-3b51-4463-9139-326c57a5bb02",
           "status": "Created",
           "code": 201,
           "header": [
@@ -750,7 +750,7 @@
             },
             {
               "key": "Date",
-              "value": "Mon, 10 Nov 2025 23:53:12 GMT"
+              "value": "Tue, 11 Nov 2025 23:05:32 GMT"
             },
             {
               "key": "Keep-Alive",
@@ -816,10 +816,10 @@
             ]
           },
           "cookie": [],
-          "responseTime": 140,
+          "responseTime": 81,
           "responseSize": 49
         },
-        "id": "f43901f5-2726-4163-8a20-8ea81236a8d6",
+        "id": "be2d374e-0646-4d97-b725-897992833920",
         "assertions": [
           {
             "assertion": "status is 201",
@@ -829,15 +829,15 @@
       },
       {
         "cursor": {
-          "ref": "246e74c4-10d5-4ea3-8cd6-f3cb26ea7b5d",
+          "ref": "b781a01f-f35d-4636-b63b-6deaadc924a2",
           "length": 11,
           "cycles": 1,
           "position": 1,
           "iteration": 0,
-          "httpRequestId": "1e812dcc-39e9-4f78-8fde-c6c4b89206d4"
+          "httpRequestId": "b3869644-ac42-42de-9b00-5936beaad286"
         },
         "item": {
-          "id": "fb18c8a6-0832-4f23-9ef5-1318353cef6e",
+          "id": "57c1153f-7a4a-4d47-93bc-0adee96517c5",
           "name": "RF2 - Registrar Usuario de Servicios",
           "request": {
             "url": {
@@ -868,14 +868,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "ab3148de-0809-443e-bd5b-b52a9aea21fa",
+                "id": "4f708aca-3439-4417-a4ed-eb17ebd08f35",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
                   "var json = pm.response.json();",
                   "pm.environment.set('clienteId', json.documentoUsuario || 9999);"
                 ],
-                "_lastExecutionId": "6ec18920-e56f-4238-ab26-15493e73b749"
+                "_lastExecutionId": "22107735-9b4c-404f-8717-ac6d0de06706"
               }
             }
           ]
@@ -917,7 +917,7 @@
             },
             {
               "key": "Postman-Token",
-              "value": "8b929ebe-257f-463d-a6ce-a9096dfac97b",
+              "value": "9fad3c53-b6e2-4844-ba72-fc8d9b9c6bc2",
               "system": true
             },
             {
@@ -948,7 +948,7 @@
           }
         },
         "response": {
-          "id": "538b9ab1-7e17-48f0-9cd8-0471255158d6",
+          "id": "05af79ee-c38b-413a-ab0c-b4d8448bdb02",
           "status": "Created",
           "code": 201,
           "header": [
@@ -962,7 +962,7 @@
             },
             {
               "key": "Date",
-              "value": "Mon, 10 Nov 2025 23:53:12 GMT"
+              "value": "Tue, 11 Nov 2025 23:05:32 GMT"
             },
             {
               "key": "Keep-Alive",
@@ -1080,10 +1080,10 @@
             ]
           },
           "cookie": [],
-          "responseTime": 52,
+          "responseTime": 29,
           "responseSize": 101
         },
-        "id": "fb18c8a6-0832-4f23-9ef5-1318353cef6e",
+        "id": "57c1153f-7a4a-4d47-93bc-0adee96517c5",
         "assertions": [
           {
             "assertion": "status is 201",
@@ -1093,15 +1093,15 @@
       },
       {
         "cursor": {
-          "ref": "a3ddd3d1-d9c3-46ff-a6f8-e1053b52d2ed",
+          "ref": "bb72e6af-cf42-48b0-9f4b-40827fea3911",
           "length": 11,
           "cycles": 1,
           "position": 2,
           "iteration": 0,
-          "httpRequestId": "0e8fabc4-7e2f-4e6e-9390-4422d12b45fe"
+          "httpRequestId": "4d475722-42c3-404c-a22f-e15b941b8a6d"
         },
         "item": {
-          "id": "4a1f6f9e-0201-43c3-a026-6f3157c0ec54",
+          "id": "e1af387e-e122-4db1-beca-08843f51ca73",
           "name": "RF3 - Registrar Usuario Conductor",
           "request": {
             "url": {
@@ -1132,14 +1132,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "9ce2f08a-c875-4df9-a6e7-bfe2a86566af",
+                "id": "8b4004d5-196d-44a3-875a-71471c8142e4",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
                   "var json = pm.response.json();",
                   "pm.environment.set('conductorId', json.documentoUsuario || 11001);"
                 ],
-                "_lastExecutionId": "fd35ea86-dce9-47ab-9e1e-d60261f2a63f"
+                "_lastExecutionId": "87203ccf-fd7e-4dfb-8df4-15c1941c8998"
               }
             }
           ]
@@ -1181,7 +1181,7 @@
             },
             {
               "key": "Postman-Token",
-              "value": "1b72ac15-399e-47a5-8c58-160d32e161f6",
+              "value": "8fd43767-9f95-4378-b1eb-e3a500f27782",
               "system": true
             },
             {
@@ -1212,7 +1212,7 @@
           }
         },
         "response": {
-          "id": "592b840b-c75b-420e-ae98-a43b2ad912c6",
+          "id": "2c92b0a5-84d1-4374-b2bc-bd706ffceffd",
           "status": "Created",
           "code": 201,
           "header": [
@@ -1226,7 +1226,7 @@
             },
             {
               "key": "Date",
-              "value": "Mon, 10 Nov 2025 23:53:12 GMT"
+              "value": "Tue, 11 Nov 2025 23:05:32 GMT"
             },
             {
               "key": "Keep-Alive",
@@ -1287,10 +1287,10 @@
             ]
           },
           "cookie": [],
-          "responseTime": 54,
+          "responseTime": 50,
           "responseSize": 44
         },
-        "id": "4a1f6f9e-0201-43c3-a026-6f3157c0ec54",
+        "id": "e1af387e-e122-4db1-beca-08843f51ca73",
         "assertions": [
           {
             "assertion": "status is 201",
@@ -1300,15 +1300,15 @@
       },
       {
         "cursor": {
-          "ref": "2850249e-9346-46fc-8d79-a20eab6f5eb4",
+          "ref": "899ff7ee-9077-4ee6-a4f2-8828256c2f52",
           "length": 11,
           "cycles": 1,
           "position": 3,
           "iteration": 0,
-          "httpRequestId": "71bf9ad8-28bf-468a-abf6-c6662ae4f036"
+          "httpRequestId": "09c08443-c70f-4871-a7cd-28b515655a14"
         },
         "item": {
-          "id": "3b197956-b424-488e-b58b-146775d3422f",
+          "id": "b9a99b0e-e6f5-4d76-b3f9-a34aeb3e48c9",
           "name": "RF4 - Registrar Vehículo",
           "request": {
             "url": {
@@ -1339,14 +1339,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "457640c4-6c23-4480-9566-3196713800f9",
+                "id": "aaef50bc-b8be-40ed-b407-864905ff769a",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
                   "var json = pm.response.json();",
                   "pm.environment.set('vehiculoPlaca', json.placa || 'TEST123');"
                 ],
-                "_lastExecutionId": "b95f7b01-c63c-4946-8179-60fd45360e05"
+                "_lastExecutionId": "722fffde-15ce-41fb-9d5e-89c286e03d4b"
               }
             }
           ]
@@ -1388,7 +1388,7 @@
             },
             {
               "key": "Postman-Token",
-              "value": "42f7b844-4c6c-4672-9976-f0f2f4d31dc9",
+              "value": "a24fadd4-6820-47a7-aca9-24c422be7366",
               "system": true
             },
             {
@@ -1419,7 +1419,7 @@
           }
         },
         "response": {
-          "id": "0691300e-8ea4-4123-b2df-0e4ed3b42d04",
+          "id": "596d72db-e729-4ee2-bb45-7da834909390",
           "status": "Created",
           "code": 201,
           "header": [
@@ -1433,7 +1433,7 @@
             },
             {
               "key": "Date",
-              "value": "Mon, 10 Nov 2025 23:53:12 GMT"
+              "value": "Tue, 11 Nov 2025 23:05:32 GMT"
             },
             {
               "key": "Keep-Alive",
@@ -1615,10 +1615,10 @@
             ]
           },
           "cookie": [],
-          "responseTime": 50,
+          "responseTime": 44,
           "responseSize": 165
         },
-        "id": "3b197956-b424-488e-b58b-146775d3422f",
+        "id": "b9a99b0e-e6f5-4d76-b3f9-a34aeb3e48c9",
         "assertions": [
           {
             "assertion": "status is 201",
@@ -1628,15 +1628,15 @@
       },
       {
         "cursor": {
-          "ref": "c5ebd08d-6e7c-4f6d-92c0-619c7f3eb6c7",
+          "ref": "4887cc20-22d0-45c1-8f78-bc99ba46fc3d",
           "length": 11,
           "cycles": 1,
           "position": 4,
           "iteration": 0,
-          "httpRequestId": "b71fe986-fed2-416f-a95f-c6e142150690"
+          "httpRequestId": "ea77fe43-fb4c-4f4f-9047-ee62c4afa599"
         },
         "item": {
-          "id": "20bb09c6-0ca8-4338-9094-689d5ab6f311",
+          "id": "713e5da8-91bc-463e-a6ed-dbd034eef724",
           "name": "RF5 - Registrar Disponibilidad",
           "request": {
             "url": {
@@ -1667,14 +1667,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "02ffd897-df23-4136-a2ff-9a4297305b75",
+                "id": "803b9833-3819-4d62-a254-dbcdffcbfc09",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
                   "var json = pm.response.json();",
                   "pm.environment.set('disponibilidadId', json.idDisponibilidad || json.id || '');"
                 ],
-                "_lastExecutionId": "3a77285b-d1a9-4517-95ff-742ac38b0b65"
+                "_lastExecutionId": "96a07fb3-36e9-48c3-8682-30e2315b2621"
               }
             }
           ]
@@ -1716,7 +1716,7 @@
             },
             {
               "key": "Postman-Token",
-              "value": "cd58dc0a-87de-40a9-9590-65232cecc2d2",
+              "value": "6fabbb73-6c26-4571-a9d4-0e746304d7c5",
               "system": true
             },
             {
@@ -1747,7 +1747,7 @@
           }
         },
         "response": {
-          "id": "e6030afa-47f4-4551-8bd7-0062a4dbf269",
+          "id": "44d4954e-6892-40fc-b8af-014870e26314",
           "status": "Created",
           "code": 201,
           "header": [
@@ -1761,7 +1761,7 @@
             },
             {
               "key": "Date",
-              "value": "Mon, 10 Nov 2025 23:53:12 GMT"
+              "value": "Tue, 11 Nov 2025 23:05:32 GMT"
             },
             {
               "key": "Keep-Alive",
@@ -1798,7 +1798,7 @@
               52,
               49,
               48,
-              51,
+              52,
               44,
               34,
               100,
@@ -1904,10 +1904,10 @@
             ]
           },
           "cookie": [],
-          "responseTime": 63,
+          "responseTime": 64,
           "responseSize": 126
         },
-        "id": "20bb09c6-0ca8-4338-9094-689d5ab6f311",
+        "id": "713e5da8-91bc-463e-a6ed-dbd034eef724",
         "assertions": [
           {
             "assertion": "status is 201",
@@ -1917,15 +1917,15 @@
       },
       {
         "cursor": {
-          "ref": "c5909ced-2cb1-4c28-9fff-b3056bc52194",
+          "ref": "63bd7f64-9f73-4982-9501-57ce273abf87",
           "length": 11,
           "cycles": 1,
           "position": 5,
           "iteration": 0,
-          "httpRequestId": "92ecf8be-9c5d-46b1-999e-a723bd725cb6"
+          "httpRequestId": "76f2c0d0-0a4a-4e03-8d47-768809607f52"
         },
         "item": {
-          "id": "cd4cab3f-7d5e-46a3-a665-cbd3cd1c9943",
+          "id": "337b1072-a14e-4f78-b177-1553da8d40cc",
           "name": "RF6 - Modificar Disponibilidad (PUT)",
           "request": {
             "url": {
@@ -1957,12 +1957,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "820abdf6-236c-48ca-ac0a-0f53fb3e5bd8",
+                "id": "97b7afad-266a-416f-bda6-efe9f04d2d0c",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test('status is 200', function () { pm.response.to.have.status(200); });"
                 ],
-                "_lastExecutionId": "cdd92cd7-633a-43be-8810-405b8a7f6501"
+                "_lastExecutionId": "79d5d1d3-4bb3-4826-8502-441d9e042bab"
               }
             }
           ]
@@ -1975,7 +1975,7 @@
               "AlpesCab",
               "api",
               "disponibilidades",
-              "4103"
+              "4104"
             ],
             "host": [
               "localhost"
@@ -2005,7 +2005,7 @@
             },
             {
               "key": "Postman-Token",
-              "value": "bd8c406f-bcb1-415c-985d-d3be4cb45961",
+              "value": "f9830509-2fca-404e-bbf9-62001ebc7bac",
               "system": true
             },
             {
@@ -2036,7 +2036,7 @@
           }
         },
         "response": {
-          "id": "4d3a38bd-5666-4aa0-8bd4-afb713fa0b6e",
+          "id": "ffc72c4f-9690-4543-9cef-b27b131a0e2b",
           "status": "OK",
           "code": 200,
           "header": [
@@ -2050,7 +2050,7 @@
             },
             {
               "key": "Date",
-              "value": "Mon, 10 Nov 2025 23:53:12 GMT"
+              "value": "Tue, 11 Nov 2025 23:05:32 GMT"
             },
             {
               "key": "Keep-Alive",
@@ -2087,7 +2087,7 @@
               52,
               49,
               48,
-              51,
+              52,
               44,
               34,
               100,
@@ -2193,10 +2193,10 @@
             ]
           },
           "cookie": [],
-          "responseTime": 63,
+          "responseTime": 55,
           "responseSize": 126
         },
-        "id": "cd4cab3f-7d5e-46a3-a665-cbd3cd1c9943",
+        "id": "337b1072-a14e-4f78-b177-1553da8d40cc",
         "assertions": [
           {
             "assertion": "status is 200",
@@ -2206,15 +2206,15 @@
       },
       {
         "cursor": {
-          "ref": "dccbdf29-8af6-4888-99c7-f40209ac1a68",
+          "ref": "48862d68-618e-4fdc-85ea-1e9504984bcc",
           "length": 11,
           "cycles": 1,
           "position": 6,
           "iteration": 0,
-          "httpRequestId": "556bcbb9-32e9-45f4-ba9f-963d06f0613d"
+          "httpRequestId": "98518984-a60d-4e24-9b8c-a8cba9af9f50"
         },
         "item": {
-          "id": "5c7bb7df-1a37-45fb-a2c5-746e80cc35ef",
+          "id": "f52d34ab-6c54-49d3-8636-88b2cbcd079a",
           "name": "RF7 - Registrar Punto Geográfico",
           "request": {
             "url": {
@@ -2245,14 +2245,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "5d904d70-812a-4939-82f4-7dd4aa1e6394",
+                "id": "2a7d34f2-11ef-4be2-b26e-73a44b96e07b",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
                   "var json = pm.response.json();",
                   "pm.environment.set('origenId', json.idPuntoGeografico || json.id || '');"
                 ],
-                "_lastExecutionId": "5c681017-06a7-4338-8055-1e5928236202"
+                "_lastExecutionId": "1a8db392-8717-4069-a06f-ce3af33916c7"
               }
             }
           ]
@@ -2294,7 +2294,7 @@
             },
             {
               "key": "Postman-Token",
-              "value": "4e783aef-fa86-46e1-87c0-35b66773d329",
+              "value": "5944e5ca-74d1-4365-b5a6-6d44cd84eb4d",
               "system": true
             },
             {
@@ -2325,7 +2325,7 @@
           }
         },
         "response": {
-          "id": "1ef85133-df3e-45ef-a965-c324c3165572",
+          "id": "951c6c87-a082-4c1d-b31b-1acc9d45581b",
           "status": "Created",
           "code": 201,
           "header": [
@@ -2339,7 +2339,7 @@
             },
             {
               "key": "Date",
-              "value": "Mon, 10 Nov 2025 23:53:14 GMT"
+              "value": "Tue, 11 Nov 2025 23:05:32 GMT"
             },
             {
               "key": "Keep-Alive",
@@ -2377,7 +2377,7 @@
               51,
               50,
               48,
-              51,
+              54,
               44,
               34,
               110,
@@ -2487,10 +2487,10 @@
             ]
           },
           "cookie": [],
-          "responseTime": 53,
+          "responseTime": 60,
           "responseSize": 131
         },
-        "id": "5c7bb7df-1a37-45fb-a2c5-746e80cc35ef",
+        "id": "f52d34ab-6c54-49d3-8636-88b2cbcd079a",
         "assertions": [
           {
             "assertion": "status is 201",
@@ -2500,15 +2500,15 @@
       },
       {
         "cursor": {
-          "ref": "90d33d60-5f87-48e6-a94e-6490f2b9e6fb",
+          "ref": "2de2f41a-63ad-406d-a7ed-d57a770af29d",
           "length": 11,
           "cycles": 1,
           "position": 7,
           "iteration": 0,
-          "httpRequestId": "94a5042d-3467-4980-ab9f-4bb71f6d3cc3"
+          "httpRequestId": "fe995594-aaf2-4afa-bed0-d21ddea4e2a9"
         },
         "item": {
-          "id": "4266a1cf-b617-4831-9d0b-97bae6f9cfd6",
+          "id": "3fe7b010-dc47-49a2-91ed-ca7706071147",
           "name": "RF8 - Solicitar Servicio (crear servicio)",
           "request": {
             "url": {
@@ -2539,14 +2539,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "84dbb73f-683a-4f8b-818e-5a2828232c97",
+                "id": "1444a432-d0e7-465f-a815-ffbd1db3c223",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
                   "var json = pm.response.json();",
                   "pm.environment.set('servicioId', json.idServicio || json.id || '');"
                 ],
-                "_lastExecutionId": "47f2df1f-f91c-44de-a2dd-00c749dd8c91"
+                "_lastExecutionId": "4475f6f4-52cf-467c-9fd1-ad72b32db373"
               }
             }
           ]
@@ -2588,7 +2588,7 @@
             },
             {
               "key": "Postman-Token",
-              "value": "53934cde-f93d-4316-94d6-f2c6ae9f1d69",
+              "value": "3b123aeb-28ac-4649-a14a-39c5dace848d",
               "system": true
             },
             {
@@ -2615,11 +2615,11 @@
           "method": "POST",
           "body": {
             "mode": "raw",
-            "raw": "{\n  \"tipoServicio\": \"Estandar\",\n  \"clienteId\": 9999,\n  \"origenId\": 3203,\n  \"distanciaKm\": 10.5\n}"
+            "raw": "{\n  \"tipoServicio\": \"Estandar\",\n  \"clienteId\": 9999,\n  \"origenId\": 3206,\n  \"distanciaKm\": 10.5\n}"
           }
         },
         "response": {
-          "id": "60ebd726-06ec-4cdf-ad0c-259238ba48cf",
+          "id": "464bd9c0-54ea-472a-b0c9-1e934128d03f",
           "status": "Created",
           "code": 201,
           "header": [
@@ -2633,7 +2633,7 @@
             },
             {
               "key": "Date",
-              "value": "Mon, 10 Nov 2025 23:53:14 GMT"
+              "value": "Tue, 11 Nov 2025 23:05:34 GMT"
             },
             {
               "key": "Keep-Alive",
@@ -2664,7 +2664,7 @@
               54,
               53,
               48,
-              51,
+              54,
               44,
               34,
               116,
@@ -2724,10 +2724,9 @@
               34,
               58,
               49,
-              49,
               48,
               48,
-              49,
+              51,
               44,
               34,
               111,
@@ -2743,7 +2742,7 @@
               51,
               50,
               48,
-              51,
+              54,
               44,
               34,
               100,
@@ -2787,23 +2786,23 @@
               49,
               45,
               49,
-              48,
+              49,
               84,
               49,
               56,
               58,
+              48,
               53,
-              51,
               58,
-              49,
+              51,
               52,
               46,
+              48,
+              54,
               50,
               57,
-              52,
-              55,
-              49,
-              57,
+              53,
+              48,
               51,
               34,
               44,
@@ -2827,23 +2826,23 @@
               49,
               45,
               49,
-              48,
+              49,
               84,
               49,
               56,
               58,
+              48,
               53,
-              51,
               58,
-              49,
+              51,
               52,
               46,
+              48,
+              54,
               50,
               57,
-              52,
-              55,
-              49,
-              57,
+              53,
+              48,
               51,
               34,
               44,
@@ -2866,10 +2865,10 @@
             ]
           },
           "cookie": [],
-          "responseTime": 236,
-          "responseSize": 216
+          "responseTime": 161,
+          "responseSize": 215
         },
-        "id": "4266a1cf-b617-4831-9d0b-97bae6f9cfd6",
+        "id": "3fe7b010-dc47-49a2-91ed-ca7706071147",
         "assertions": [
           {
             "assertion": "status is 201",
@@ -2879,15 +2878,15 @@
       },
       {
         "cursor": {
-          "ref": "5dc799f7-7967-4cc2-bfc5-657556c9ad7e",
+          "ref": "a3437677-f272-48e3-a966-bb3ad5fac32f",
           "length": 11,
           "cycles": 1,
           "position": 8,
           "iteration": 0,
-          "httpRequestId": "88e002ca-1cf7-44f8-840c-d605d5a32bb8"
+          "httpRequestId": "50e01b75-d85f-4832-8124-84361dcb2486"
         },
         "item": {
-          "id": "77767613-a19a-497c-9084-00de89683204",
+          "id": "fb69e79f-fd7e-40aa-8e62-1697936ebf2b",
           "name": "RF9 - Registrar Viaje (marcar servicio completado)",
           "request": {
             "url": {
@@ -2920,12 +2919,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "d9b1e06d-4e39-4764-8b46-f2cbf448322c",
+                "id": "7815238d-cd05-4066-b691-02495a9b8668",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test('status is 200', function () { pm.response.to.have.status(200); });"
                 ],
-                "_lastExecutionId": "cdee1d06-846c-42bd-b508-3dd0dc1f6f71"
+                "_lastExecutionId": "8d9cb727-c075-47cf-a43e-aaf4ab5fcdcf"
               }
             }
           ]
@@ -2938,7 +2937,7 @@
               "AlpesCab",
               "api",
               "servicios",
-              "6503",
+              "6506",
               "complete"
             ],
             "host": [
@@ -2969,7 +2968,7 @@
             },
             {
               "key": "Postman-Token",
-              "value": "eb0e639d-dc9b-4623-af68-15136269d6b8",
+              "value": "10455cc7-4a0c-4fb2-a2d9-e1d07ef8d980",
               "system": true
             },
             {
@@ -3000,7 +2999,7 @@
           }
         },
         "response": {
-          "id": "7df75c5d-ee22-4392-a3a2-5c0df41523d4",
+          "id": "03f30cfa-3ed1-4aa6-a2fb-6eb8d030fb13",
           "status": "OK",
           "code": 200,
           "header": [
@@ -3014,7 +3013,7 @@
             },
             {
               "key": "Date",
-              "value": "Mon, 10 Nov 2025 23:53:14 GMT"
+              "value": "Tue, 11 Nov 2025 23:05:34 GMT"
             },
             {
               "key": "Keep-Alive",
@@ -3045,7 +3044,7 @@
               54,
               53,
               48,
-              51,
+              54,
               44,
               34,
               116,
@@ -3105,10 +3104,9 @@
               34,
               58,
               49,
-              49,
               48,
               48,
-              49,
+              51,
               44,
               34,
               111,
@@ -3124,7 +3122,7 @@
               51,
               50,
               48,
-              51,
+              54,
               44,
               34,
               100,
@@ -3168,23 +3166,22 @@
               49,
               45,
               49,
-              48,
+              49,
               84,
               49,
               56,
               58,
+              48,
               53,
-              51,
               58,
-              49,
+              51,
               52,
               46,
+              48,
+              54,
               50,
               57,
-              52,
-              55,
-              49,
-              57,
+              53,
               34,
               44,
               34,
@@ -3239,10 +3236,10 @@
             ]
           },
           "cookie": [],
-          "responseTime": 55,
-          "responseSize": 208
+          "responseTime": 77,
+          "responseSize": 206
         },
-        "id": "77767613-a19a-497c-9084-00de89683204",
+        "id": "fb69e79f-fd7e-40aa-8e62-1697936ebf2b",
         "assertions": [
           {
             "assertion": "status is 200",
@@ -3252,15 +3249,15 @@
       },
       {
         "cursor": {
-          "ref": "c6612a41-ab7f-42e7-8f92-b5187dd969b7",
+          "ref": "d1c77d0e-2b00-447a-8ff7-5e5f3281a5eb",
           "length": 11,
           "cycles": 1,
           "position": 9,
           "iteration": 0,
-          "httpRequestId": "d54164bb-057b-4200-b516-7762acb92dd0"
+          "httpRequestId": "5ebcaf3f-678f-4b85-9bc6-3710f96ed618"
         },
         "item": {
-          "id": "b889ed5a-b5f5-4c33-a5aa-03c888ebfb20",
+          "id": "628e91ac-4b55-475c-aadd-acdf92d26a68",
           "name": "RF10 - Dejar revisión (usuario)",
           "request": {
             "url": {
@@ -3291,12 +3288,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "2efc0314-9af9-41c5-8d95-49b3f577b5d6",
+                "id": "be36b3cb-8d74-4136-9ecb-404d73a4f431",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test('status is 201', function () { pm.response.to.have.status(201); });"
                 ],
-                "_lastExecutionId": "c927b9e5-02ac-4b78-a7a9-5b54d6e8f97a"
+                "_lastExecutionId": "de951eaf-c0f3-4d13-a242-b1c65cc8dea1"
               }
             }
           ]
@@ -3338,7 +3335,7 @@
             },
             {
               "key": "Postman-Token",
-              "value": "e326b5bd-dd83-4832-84fb-900f898a2306",
+              "value": "a36a1437-bec8-4bc9-8954-8dffe1638e49",
               "system": true
             },
             {
@@ -3369,7 +3366,7 @@
           }
         },
         "response": {
-          "id": "4702dc7b-da24-4789-9113-288d40bf8def",
+          "id": "f8cdb4c3-1975-43c8-a535-97685370a245",
           "status": "Created",
           "code": 201,
           "header": [
@@ -3383,7 +3380,7 @@
             },
             {
               "key": "Date",
-              "value": "Mon, 10 Nov 2025 23:53:14 GMT"
+              "value": "Tue, 11 Nov 2025 23:05:34 GMT"
             },
             {
               "key": "Keep-Alive",
@@ -3416,7 +3413,7 @@
               54,
               53,
               48,
-              53,
+              55,
               44,
               34,
               101,
@@ -3507,10 +3504,10 @@
             ]
           },
           "cookie": [],
-          "responseTime": 48,
+          "responseTime": 44,
           "responseSize": 107
         },
-        "id": "b889ed5a-b5f5-4c33-a5aa-03c888ebfb20",
+        "id": "628e91ac-4b55-475c-aadd-acdf92d26a68",
         "assertions": [
           {
             "assertion": "status is 201",
@@ -3520,15 +3517,15 @@
       },
       {
         "cursor": {
-          "ref": "585df57e-982b-414f-b959-c050957f6e22",
+          "ref": "34fa62e3-e685-45cd-9d26-49cf13023dec",
           "length": 11,
           "cycles": 1,
           "position": 10,
           "iteration": 0,
-          "httpRequestId": "abcfb929-aa75-46eb-92e1-a2b07ffba245"
+          "httpRequestId": "ddf80a92-03f6-465b-886e-9619ee592554"
         },
         "item": {
-          "id": "38423bd6-3504-41e6-9178-88445df3cc40",
+          "id": "54665140-a54c-4443-a3d7-702077589a04",
           "name": "RF11 - Dejar revisión (conductor)",
           "request": {
             "url": {
@@ -3559,12 +3556,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "7a89b7e6-7a3c-4f75-92c1-684c8d090143",
+                "id": "bd9c5f6f-fca2-4e5b-a3dc-39502e999d2b",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test('status is 201', function () { pm.response.to.have.status(201); });"
                 ],
-                "_lastExecutionId": "be6f2cae-0367-4f8b-8228-107f80a794b1"
+                "_lastExecutionId": "cfc3f7fa-7c6d-498c-8889-188fc0fc58b5"
               }
             }
           ]
@@ -3606,7 +3603,7 @@
             },
             {
               "key": "Postman-Token",
-              "value": "5493d5e9-0ff6-4228-8c83-9a0cc1f2ad3f",
+              "value": "506a78d4-b1f2-4f7b-bc8b-e5b87a183b63",
               "system": true
             },
             {
@@ -3637,7 +3634,7 @@
           }
         },
         "response": {
-          "id": "0789f2ab-6b76-4ae6-96ae-50b2a7f27e3c",
+          "id": "e58f85a6-a701-4284-b54c-8828e80925fc",
           "status": "Created",
           "code": 201,
           "header": [
@@ -3651,7 +3648,7 @@
             },
             {
               "key": "Date",
-              "value": "Mon, 10 Nov 2025 23:53:14 GMT"
+              "value": "Tue, 11 Nov 2025 23:05:34 GMT"
             },
             {
               "key": "Keep-Alive",
@@ -3684,7 +3681,7 @@
               54,
               53,
               48,
-              54,
+              56,
               44,
               34,
               101,
@@ -3770,10 +3767,10 @@
             ]
           },
           "cookie": [],
-          "responseTime": 81,
+          "responseTime": 41,
           "responseSize": 102
         },
-        "id": "38423bd6-3504-41e6-9178-88445df3cc40",
+        "id": "54665140-a54c-4443-a3d7-702077589a04",
         "assertions": [
           {
             "assertion": "status is 201",
@@ -3783,7 +3780,7 @@
       }
     ],
     "transfers": {
-      "responseTotal": 1375
+      "responseTotal": 1372
     },
     "failures": [],
     "error": null

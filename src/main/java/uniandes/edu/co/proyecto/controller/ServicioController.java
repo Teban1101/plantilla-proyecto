@@ -12,12 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 import uniandes.edu.co.proyecto.modelo.Servicio;
-import uniandes.edu.co.proyecto.modelo.TarifaServicio;
-import uniandes.edu.co.proyecto.modelo.UsuarioConductor;
 import uniandes.edu.co.proyecto.repositorio.ServicioRepository;
-import uniandes.edu.co.proyecto.repositorio.TarifaServicioRepository;
-import uniandes.edu.co.proyecto.repositorio.UsuarioConductorRepository;
-import uniandes.edu.co.proyecto.repositorio.UsuarioRepository;
+import uniandes.edu.co.proyecto.service.ServicioService;
 
 import java.util.List;
 
@@ -29,13 +25,7 @@ public class ServicioController {
     private ServicioRepository servicioRepository;
 
     @Autowired
-    private TarifaServicioRepository tarifaRepository;
-
-    @Autowired
-    private UsuarioConductorRepository usuarioConductorRepository;
-
-    @Autowired
-    private UsuarioRepository usuarioRepository;
+    private ServicioService servicioService;
 
     @GetMapping
     public ResponseEntity<List<Servicio>> getAll() {
@@ -51,52 +41,7 @@ public class ServicioController {
 
     @PostMapping
     public ResponseEntity<Servicio> create(@Valid @RequestBody Servicio s) {
-        // Ensure ID is assigned when using Oracle (no identity by default)
-        if (s.getIdServicio() == null) {
-            Long max = servicioRepository.findMaxId();
-            s.setIdServicio((max == null ? 1L : max + 1L));
-        }
-        // Ensure tarifa exists for the tipoServicio (FK constraint)
-        if (s.getTipoServicio() != null && !tarifaRepository.existsById(s.getTipoServicio())) {
-            TarifaServicio t = new TarifaServicio();
-            t.setTipoServicio(s.getTipoServicio());
-            t.setCostoPorKm(1000.0);
-            tarifaRepository.save(t);
-        }
-
-        // Ensure a conductor is set (DB requires CONDUCTOR_ID NOT NULL and FK to USUARIOCONDUCTOR)
-        if (s.getConductorId() == null || !usuarioConductorRepository.existsById(s.getConductorId())) {
-            // Try to pick any existing conductor
-            java.util.List<UsuarioConductor> conductores = usuarioConductorRepository.findAll();
-            if (!conductores.isEmpty()) {
-                s.setConductorId(conductores.get(0).getDocumentoUsuario());
-            } else {
-                // Create a minimal UsuarioConductor using clienteId as documento (ensure base USUARIO exists)
-                Long cliente = s.getClienteId();
-                if (cliente != null && !usuarioRepository.existsById(cliente)) {
-                    // create a minimal usuario so FK from usuarioconductor can reference it
-                    uniandes.edu.co.proyecto.modelo.Usuario base = new uniandes.edu.co.proyecto.modelo.Usuario();
-                    base.setDocumentoUsuario(cliente);
-                    base.setNombre("AutoUser" + cliente);
-                    base.setCorreo("auto" + cliente + "@example.com");
-                    base.setCelular("0000000000");
-                    usuarioRepository.save(base);
-                }
-                UsuarioConductor uc = new UsuarioConductor();
-                uc.setDocumentoUsuario(cliente == null ? 0L : cliente);
-                uc.setHabilitado("1");
-                usuarioConductorRepository.save(uc);
-                s.setConductorId(cliente == null ? 0L : cliente);
-            }
-        }
-
-        // Fill mandatory timestamps/numeric fields with defaults so DB NOT NULL constraints pass
-        if (s.getHoraInicio() == null) s.setHoraInicio(java.time.LocalDateTime.now());
-        if (s.getHoraFin() == null) s.setHoraFin(java.time.LocalDateTime.now());
-        if (s.getDuracionMin() == null) s.setDuracionMin(0);
-        if (s.getDistanciaKm() == null) s.setDistanciaKm(0.0);
-
-        Servicio saved = servicioRepository.save(s);
+        Servicio saved = servicioService.createServicio(s);
         return ResponseEntity.status(201).body(saved);
     }
 
@@ -119,13 +64,8 @@ public class ServicioController {
 
     @PutMapping("/{id}/complete")
     public ResponseEntity<Servicio> completeService(@PathVariable Long id, @RequestBody Servicio payload) {
-        return servicioRepository.findById(id).map(existing -> {
-            // Update completion fields if present in payload
-            if (payload.getHoraFin() != null) existing.setHoraFin(payload.getHoraFin());
-            if (payload.getDuracionMin() != null) existing.setDuracionMin(payload.getDuracionMin());
-            if (payload.getDistanciaKm() != null) existing.setDistanciaKm(payload.getDistanciaKm());
-            Servicio saved = servicioRepository.save(existing);
-            return ResponseEntity.ok(saved);
-        }).orElse(ResponseEntity.notFound().build());
+        Servicio saved = servicioService.completeService(id, payload);
+        if (saved == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(saved);
     }
 }
